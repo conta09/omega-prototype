@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { FaHistory, FaLink } from 'react-icons/fa';
 import { GrHomeRounded } from "react-icons/gr";
 import { IoWalletOutline, IoCloseCircleOutline } from "react-icons/io5";
+import Image from 'next/image';
 
 const Sidebar = ({ setContent }) => {
     const [activeMenu, setActiveMenu] = useState(true);
@@ -14,6 +15,12 @@ const Sidebar = ({ setContent }) => {
         <div className={`fixed inset-0 z-50 transition-transform transform ${activeMenu ? 'translate-x-0' : '-translate-x-full'} md:relative md:translate-x-0 w-64 md:w-96 h-full bg-black text-white flex flex-col`}>
             <div className="flex items-center justify-center my-7 px-4">
                 
+                <Image
+                    src="/omega-logo.png"
+                    alt="logo"
+                    width={120}
+                    height={120}
+                />
                 <button onClick={toggleMenu} className="text-2xl rounded-full md:hidden ml-auto px-4">
                     <IoCloseCircleOutline />
                 </button>
@@ -36,9 +43,8 @@ const Sidebar = ({ setContent }) => {
                     <FaLink className="mx-5" />
                     Referrals
                 </button>
-                <button onClick={() => setContent('referrals')} className="flex items-center px-4 py-3 hover:bg-[#242424] w-64 text-left rounded-lg">
-                    <FaLink className="mx-5" />
-                    Referrals
+                <button onClick={() => setContent('referrals')} className="flex items-center font-normal px-8 py-6 mt-auto  w-64 text-left rounded-lg">
+                    Log Out
                 </button>
 
                 

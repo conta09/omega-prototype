@@ -9,12 +9,15 @@ const TopBar = ({ balance, handleDepositClick, handleWithdrawClick }) => {
       <div className="flex justify-between items-center">
         <h1 className="text-[1.2rem] font-semibold py-5">Dashboard</h1>
         <div className="flex space-x-2 mx-2">
+          {/* 
           <button className="bg-black rounded-3xl">
             <IoNotificationsOutline className="text-xl sm:text-lg m-2" />
           </button>
-          <button className="bg-black rounded-2xl">
+          <button className=" bg-black rounded-2xl">
             <FaRegUser className="text-xl sm:text-lg m-2" />
           </button>
+          */}
+          
           <button className="md:hidden text-xl m-2 bg-black rounded-3xl">
             <RiMenu4Fill className="text-xl m-2" />
           </button>
@@ -22,7 +25,7 @@ const TopBar = ({ balance, handleDepositClick, handleWithdrawClick }) => {
       </div>
       <div className="mt-2">
         <p className="text-[#686868] text-[0.9rem]">Available Balance</p>
-        <p className="text-2xl py-3 font-bold">${balance}</p> {/* Display the current balance */}
+        <p className="text-2xl py-3 font-bold">${balance}</p>
       </div>
       <div className="flex space-x-4 my-5">
         <button

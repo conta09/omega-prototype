@@ -1,6 +1,8 @@
 "use client"
 import Layout from '../components/Layout';
 import { useState } from 'react';
+import HomePage from '../components/HomePage';
+import Wallet from '../components/Wallet';
 
 const Home = () => {
   const [content, setContent] = useState('home');
@@ -18,9 +20,9 @@ const Home = () => {
   const renderContent = () => {
     switch(content) {
       case 'home':
-        return <div>Home Content</div>;
+        return <HomePage />;
       case 'wallet':
-        return <div>Wallet Content</div>;
+        return <Wallet />;
       case 'transactionHistory':
         return <div>Transaction History Content</div>;
       case 'referrals':
