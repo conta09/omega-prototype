@@ -1,6 +1,7 @@
 "use client"
 import Link from 'next/link';
 import Image from 'next/image';
+import { signIn } from "next-auth/react";
 
 
 const LogIn = () => {
@@ -8,7 +9,12 @@ const LogIn = () => {
     <div>
       <div className='flex justify-between py-4 mx-10 my-3'>
         <Link href="/">
-          
+        <Image
+                    src="/omega-logo.png"
+                    alt="logo"
+                    width={80}
+                    height={80}
+                />
         </Link>
         <div className='mr-4 flex gap-4'>
           <Link href="/signup">
@@ -46,6 +52,7 @@ const LogIn = () => {
               </button>
               <p className='text-center my-4'>or</p>
               <button
+              onClick={() => signIn("google")}
                 type="button"
                 className="w-full px-4 py-3 font-medium text-[0.9rem] text-black bg-white rounded-md hover:bg-[#e4e4e4] focus:outline-none focus:ring focus:ring-blue-300"
             

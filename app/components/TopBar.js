@@ -1,6 +1,5 @@
 import React from 'react';
 import { FaHandHoldingUsd, FaRegUser } from 'react-icons/fa';
-import { IoNotificationsOutline } from 'react-icons/io5';
 import { RiMenu4Fill } from 'react-icons/ri';
 
 const TopBar = ({ balance, handleDepositClick, handleWithdrawClick }) => {

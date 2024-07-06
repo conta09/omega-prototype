@@ -1,28 +1,36 @@
 "use client"
-import Layout from '../components/Layout';
 import { useState } from 'react';
+import Layout from '../components/Layout';
 import HomePage from '../components/HomePage';
 import Wallet from '../components/Wallet';
 
 const Home = () => {
   const [content, setContent] = useState('home');
+  const [balance, setBalance] = useState(0); // Add balance state
 
   const handleDepositClick = () => {
-    // Implement deposit logic here
-    console.log('Deposit clicked');
+    setContent('wallet');
   };
 
   const handleWithdrawClick = () => {
-    // Implement withdraw logic here
-    console.log('Withdraw clicked');
+    setContent('wallet');
+  };
+
+  const updateBalance = (amount, action) => {
+    const amountNumber = parseFloat(amount);
+    if (action === 'Deposit') {
+      setBalance(prevBalance => prevBalance + amountNumber);
+    } else if (action === 'Withdraw') {
+      setBalance(prevBalance => prevBalance - amountNumber);
+    }
   };
 
   const renderContent = () => {
-    switch(content) {
+    switch (content) {
       case 'home':
         return <HomePage />;
       case 'wallet':
-        return <Wallet />;
+        return <Wallet balance={balance} updateBalance={updateBalance} />;
       case 'transactionHistory':
         return <div>Transaction History Content</div>;
       case 'referrals':
@@ -37,6 +45,7 @@ const Home = () => {
       setContent={setContent}
       handleDepositClick={handleDepositClick}
       handleWithdrawClick={handleWithdrawClick}
+      balance={balance} // Pass balance to Layout
     >
       {renderContent()}
     </Layout>
