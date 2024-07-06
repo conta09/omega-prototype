@@ -3,7 +3,7 @@ import TopBar from './TopBar';
 
 const Layout = ({ children, handleDepositClick, handleWithdrawClick, setContent, balance }) => {
   return (
-    <div className="h-screen flex justify-center">
+    <div className="h-screen flex justify-center bg-black">
       <Sidebar setContent={setContent} />
       <main className="content flex-grow text-white">
         <div className="">
