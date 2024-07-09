@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import WalletSelection from './WalletSelection';
 import CryptoTransaction from './CryptoTransaction';
 import { SiLetsencrypt } from "react-icons/si";
 import { IoCloseCircleOutline } from "react-icons/io5";

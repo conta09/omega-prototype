@@ -13,6 +13,7 @@
     "@emotion/styled": "^11.11.5",
     "@material-tailwind/react": "^2.1.9",
     "@mui/material": "^5.16.0",
+    "axios": "^1.7.2",
     "coinbase-commerce-node": "^1.0.4",
     "firebase": "^10.12.3",
     "mongoose": "^8.4.5",
