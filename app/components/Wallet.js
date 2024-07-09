@@ -1,21 +1,27 @@
-"use client"
 import { useState } from 'react';
 import WalletSelection from './WalletSelection';
+import CryptoTransaction from './CryptoTransaction';
+import { SiLetsencrypt } from "react-icons/si";
+import { IoCloseCircleOutline } from "react-icons/io5";
+
 import Image from 'next/image';
 
 const Wallet = ({ balance, updateBalance }) => {
   const [action, setAction] = useState(null);
   const [amount, setAmount] = useState('');
   const [gateway, setGateway] = useState(null);
+  const [showCryptoPopup, setShowCryptoPopup] = useState(false); // State to manage popup visibility
 
   const handleGatewayClick = (type) => {
     setGateway(type);
     setAction(null); // Reset action when changing gateway
+    setShowCryptoPopup(false); // Close popup when changing gateway
   };
 
   const handleActionClick = (type) => {
     setAction(type);
     setAmount('');
+    setShowCryptoPopup(false); // Close popup when action is selected
   };
 
   const handleInputChange = (e) => {
@@ -30,19 +36,24 @@ const Wallet = ({ balance, updateBalance }) => {
     }
     setAction(null);
     setAmount('');
+    setShowCryptoPopup(false); // Close popup after submitting
+  };
+
+  const handleShowPopup = () => {
+    setShowCryptoPopup(true); // Show popup when clicked
   };
 
   return (
     <div className="p-6 max-w-sm rounded-xl shadow-md space-y-4 text-white">
       <div>
-        <h2 className="text-xl font-semibold">Select Gateway</h2>
+        <h2 className="text-[1rem] font-normal ">Select Gateway</h2>
       </div>
-      <div className='flex space-x-4'>
+      <div className='flex space-x-4 w-1/2'>
         <button onClick={() => handleGatewayClick('Momo')} className='text-black font-semibold py-2 px-4 rounded'>
-          <Image src="/momo.jpeg" alt="Momo" width={100} height={160} />
+          <Image src="/momo.jpeg" alt="Momo" width={80} height={80} />
         </button>
         <button onClick={() => handleGatewayClick('Binance')} className='bg-white text-black font-semibold py-2 px-4 rounded'>
-          <Image src="/binance.jpg" alt="Binance" width={100} height={160} />
+          <Image src="/binance.jpg" alt="Binance" width={80} height={80} />
         </button>
       </div>
 
@@ -51,13 +62,13 @@ const Wallet = ({ balance, updateBalance }) => {
           <div className="flex space-x-4 mt-4">
             <button
               onClick={() => handleActionClick('Deposit')}
-              className="bg-white text-black font-semibold py-2 px-4 rounded"
+              className="bg-white hover:bg-[#c9c8c8] text-black font-semibold py-2 px-4 rounded w-10"
             >
               Deposit
             </button>
             <button
               onClick={() => handleActionClick('Withdraw')}
-              className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
+              className=" hover:bg-white hover:text-black text-white font-bold py-2 px-4 border-[1px] border-white rounded"
             >
               Withdraw
             </button>
@@ -90,7 +101,29 @@ const Wallet = ({ balance, updateBalance }) => {
 
       {gateway === 'Binance' && (
         <div className="mt-4">
-          <WalletSelection />
+          {/* Button to show crypto transaction popup */}
+          <button
+            onClick={handleShowPopup}
+            className="flex hover:bg-white hover:text-black border-white border-[1px] font-medium py-3 px-5 rounded-lg"
+          >
+            <SiLetsencrypt className='mx-3 ' />
+            Proceed to Transaction
+          </button>
+
+          {/* Popup for crypto transaction */}
+          {showCryptoPopup && (
+            <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center">
+              <div className=" p-6 rounded-xl shadow-md">
+                <CryptoTransaction />
+                <button
+                  onClick={() => setShowCryptoPopup(false)}
+                  className="absolute top-0 right-10 text-[2rem] m-10 text-white hover:text-gray-700"
+                >
+                <IoCloseCircleOutline />
+                </button>
+              </div>
+            </div>
+          )}
         </div>
       )}
     </div>

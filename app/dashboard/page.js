@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import { useState } from 'react';
 import Layout from '../components/Layout';
 import HomePage from '../components/HomePage';
