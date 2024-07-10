@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Navbar,
   MobileNav,
@@ -7,9 +7,11 @@ import {
   IconButton,
 } from "@material-tailwind/react";
 import Image from "next/image";
+import AuthComponent from "./AuthComponent"; // Adjust the import based on your file structure
 
 export function StickyNavbar() {
   const [openNav, setOpenNav] = React.useState(false);
+  const [showAuth, setShowAuth] = useState(false);
 
   React.useEffect(() => {
     window.addEventListener(
@@ -68,6 +70,7 @@ export function StickyNavbar() {
                 variant="text"
                 size="sm"
                 className="hidden lg:inline-block text-white"
+                onClick={() => setShowAuth(true)} // Show the AuthComponent
               >
                 <span>Log In</span>
               </Button>
@@ -75,6 +78,8 @@ export function StickyNavbar() {
                 variant="gradient"
                 size="sm"
                 className="hidden lg:inline-block bg-white text-black"
+                onClick={() => setShowAuth(true)} // Show the AuthComponent
+
               >
                 <span>Sign up</span>
               </Button>
@@ -121,15 +126,30 @@ export function StickyNavbar() {
         <MobileNav open={openNav}>
           {navList}
           <div className="flex items-center gap-x-1">
-            <Button fullWidth variant="text" size="sm" className="text-white">
+            <Button                 onClick={() => setShowAuth(true)} // Show the AuthComponent
+              fullWidth variant="text" size="sm" className="text-white">
               <span>Log In</span>
             </Button>
-            <Button fullWidth variant="gradient" size="sm" className="bg-gradient-to-r from-blue-500 to-blue-700 text-white">
+            <Button                 onClick={() => setShowAuth(true)} // Show the AuthComponent
+                     fullWidth variant="gradient" size="sm" className="bg-gradient-to-r from-blue-500 to-blue-700 text-white">
               <span>Sign in</span>
             </Button>
           </div>
         </MobileNav>
       </Navbar>
+      {showAuth && (
+        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
+          <div className=" p-8 rounded-lg shadow-md w-96">
+            <button
+              className="absolute top-4 right-4 text-gray-500 hover:text-gray-700"
+              onClick={() => setShowAuth(false)} // Close the AuthComponent
+            >
+              &times;
+            </button>
+            <AuthComponent />
+          </div>
+        </div>
+      )}
     </div>
   );
 }

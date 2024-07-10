@@ -4,7 +4,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { RiMenu4Fill } from 'react-icons/ri';
 import { useRouter } from 'next/navigation'; // Use next/navigation for Next.js 13 App Router
-import netlifyIdentity, { initNetlifyIdentity, login } from '../lib/netlifyIdentity';
+import netlifyIdentity, { initNetlifyIdentity, login } from '../../lib/netlifyIdentity';
 
 const Navbar = () => {
   const [user, setUser] = useState(null);

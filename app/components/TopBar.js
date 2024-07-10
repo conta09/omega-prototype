@@ -4,7 +4,7 @@ import { RiMenu4Fill } from 'react-icons/ri';
 
 const TopBar = ({ balance, handleDepositClick, handleWithdrawClick }) => {
   return (
-    <div className="bg-[#242424] text-white p-6 rounded-b-[35px] max-w-3xl mx-auto">
+    <div className="bg-[#242424] text-white p-6 rounded-[35px] max-w-[47rem] mx-auto">
       <div className="flex justify-between items-center">
         <h1 className="text-[1.2rem] font-semibold py-5">Dashboard</h1>
         <div className="flex space-x-2 mx-2">
@@ -17,9 +17,7 @@ const TopBar = ({ balance, handleDepositClick, handleWithdrawClick }) => {
           </button>
           */}
           
-          <button className="md:hidden text-xl m-2 bg-black rounded-3xl">
-            <RiMenu4Fill className="text-xl m-2" />
-          </button>
+         
         </div>
       </div>
       <div className="mt-2">

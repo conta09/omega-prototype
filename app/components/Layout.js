@@ -1,5 +1,6 @@
 import Sidebar from './SideBar';
 import TopBar from './TopBar';
+import Row from './Row';
 
 const Layout = ({ children, handleDepositClick, handleWithdrawClick, setContent, balance }) => {
 
@@ -8,6 +9,7 @@ const Layout = ({ children, handleDepositClick, handleWithdrawClick, setContent,
       <Sidebar setContent={setContent} />
       <main className="content flex-grow text-white">
         <div className="">
+          <Row />
           <TopBar
             handleDepositClick={handleDepositClick}
             handleWithdrawClick={handleWithdrawClick}

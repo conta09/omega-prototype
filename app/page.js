@@ -7,7 +7,6 @@ import About from "./components/About";
 import AuthOptions from "./components/AuthOptions";
 import UserInfo from "./components/UserInfo";
 import FAQ from "./components/Faqs";
-
 export default function Home() {
  
   return (

@@ -47,9 +47,18 @@ const Sidebar = ({ setContent }) => {
                     <FaLink className="mx-5" />
                     Markets
                 </button>
-                <button onClick={() => setContent('referrals')} className="flex items-center font-normal px-8 py-6 mt-auto  w-64 text-left rounded-lg">
-                    Log Out
-                </button>
+                <div className='flex flex-col text-left px-5 '>
+                    <button  className="text-[#828080] font-normal  py-4 text-left  w-64 rounded-lg">
+                        Log Out
+                    </button>
+                    <div className='text-[#5f5e5e] font-normal'>
+                        id:<span>AS2355c</span>
+                    </div>
+                    <div className='text-[#5f5e5e] font-normal'>
+                        Email:<span>johndoe@gmail.com</span>
+                    </div>
+                </div>
+                
 
                 
             </div>
