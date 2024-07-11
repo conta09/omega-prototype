@@ -2,11 +2,11 @@ import React from 'react'
 import { GrShieldSecurity } from "react-icons/gr";
 const About = () => {
   return (
-   <section className='m-20'>
-     <div className=' w-[30rem] my-3'>
+   <section className='m-10'>
+     <div className=' my-3'>
        <h1 className='text-5xl font-semibold'>What is Omega Trading?</h1>
        <p className='py-5'>
-       Lorem ipsum dolor sit amet,  consectetur adipiscing elit consectetur adipiscing elit
+       Your all-in-one saving platform to save and earn cryptocurrencie.
        </p>
       </div>
       <div className='bg-[#141414] rounded-2xl flex flex-wrap justify-center my-30' >

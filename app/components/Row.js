@@ -4,10 +4,10 @@ import { RiMenu4Fill } from 'react-icons/ri';
 
 
 
-const Row = () => {
+const Row = ({ toggleMenu }) => {
   return (
     <div className='flex justify-between my-3 ml-auto'>
-    <button className="md:hidden text-xl pr-3 m-2 bg-black rounded-3xl">
+    <button onClick={toggleMenu} className="md:hidden text-xl pr-3 m-2 bg-black rounded-3xl">
             <RiMenu4Fill className="text-xl m-2" />
     </button>
 

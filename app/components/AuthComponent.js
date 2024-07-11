@@ -49,7 +49,6 @@ const AuthComponent = () => {
       if (res.ok) {
         const form = e.target;
         form.reset();
-        router.push("/dashboard");
       } else {
         console.log("User registration failed.");
       }
