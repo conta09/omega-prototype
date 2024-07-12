@@ -36,10 +36,7 @@ const Sidebar = ({ setContent, toggleMenu, activeMenu }) => {
                     <FaLink className="mx-5" />
                     Referrals
                 </button>
-                <button onClick={() => setContent('markets')} className="flex items-center px-4 py-3 hover:bg-[#242424] w-64 text-left rounded-lg">
-                    <FaLink className="mx-5" />
-                    Markets
-                </button>
+               
                 <div className='flex flex-col text-left px-5 '>
                     <button className="text-[#828080] font-normal py-4 text-left w-64 rounded-lg">
                         Log Out

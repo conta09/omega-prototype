@@ -3,7 +3,7 @@ import { useState } from 'react';
 import Layout from '../components/Layout';
 import HomePage from '../components/HomePage';
 import Wallet from '../components/Wallet';
-
+import PaymentHistory from '../components/PaymentHistory';
 const Home = () => {
   const [content, setContent] = useState('home');
   const [balance, setBalance] = useState(0); // Add balance state
@@ -32,7 +32,7 @@ const Home = () => {
       case 'wallet':
         return <Wallet balance={balance} updateBalance={updateBalance} />;
       case 'transactionHistory':
-        return <div>Transaction History Content</div>;
+        return <PaymentHistory />;
       case 'referrals':
         return <div>Referrals Content</div>;
       default:

@@ -1,53 +1,29 @@
-// components/ReferralLink.js
 "use client"
-import { useState } from 'react';
-import axios from 'axios';
+// app/components/ReferralLink.js
+import React, { useEffect, useState } from 'react';
+import { generateReferralLink } from '../utils/referral'; // Adjust the path as necessary
+import { useUser } from '../context/UserContext'; // Adjust the path as necessary
 
-const ReferralLink = ({ userId }) => {
+const ReferralLink = () => {
   const [referralLink, setReferralLink] = useState('');
+  const { user } = useUser(); // Assuming you have a user context
 
-  const generateReferralLink = async () => {
-    try {
-      const response = await axios.post('/api/generateReferral', { userId });
-      setReferralLink(response.data.referralLink);
-    } catch (error) {
-      console.error('Error generating referral link:', error);
+  useEffect(() => {
+    if (user) {
+      const link = generateReferralLink(user._id);
+      setReferralLink(link);
     }
-  };
-
-  const copyToClipboard = () => {
-    navigator.clipboard.writeText(referralLink);
-    alert('Referral link copied to clipboard!');
-  };
+  }, [user]);
 
   return (
-    <div className=" p-4 max-w-md ml-4 rounded-xl shadow-md space-y-4">
-      <h2 className="text-xl  font-bold ">Referral Program</h2>
-      <p className='w-[16rem]  py-3 text-[0.9rem]'>Refer friends and earn rewards for each successful referral made</p>
-      <button
-        onClick={generateReferralLink}
-        className="bg-white  text-black font-bold py-2 px-7 rounded-lg"
-      >
-        Generate Referral Link
-      </button>
-      {referralLink && (
-        <div className="space-y-2">
-          <input
-            type="text"
-            value={referralLink}
-            readOnly
-            className="w-full px-3 py-2 border rounded"
-          />
-          <button
-            onClick={copyToClipboard}
-            className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded"
-          >
-            Copy to Clipboard
-          </button>
-        </div>
+    <div>
+      {referralLink ? (
+        <p>Your referral link: <a href={referralLink}>{referralLink}</a></p>
+      ) : (
+        <p>Loading...</p>
       )}
     </div>
   );
-};
+}
 
 export default ReferralLink;
