@@ -1,10 +1,29 @@
+"use client"
 import { IoCloseCircleOutline } from "react-icons/io5";
 import { GrHomeRounded } from "react-icons/gr";
 import { IoWalletOutline } from "react-icons/io5";
 import { FaHistory, FaLink } from 'react-icons/fa';
 import Image from 'next/image';
-
+import { useRouter } from "next/navigation";
 const Sidebar = ({ setContent, toggleMenu, activeMenu }) => {
+
+    const router = useRouter();
+
+  const handleLogout = async () => {
+    // Clear the authentication cookie
+    document.cookie = "user-authenticated=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+    
+    // Optionally, you can also make an API call to your backend to invalidate the session
+    // await fetch('/api/logout', { method: 'POST' });
+
+    // Redirect to the home page
+    router.push('/');
+  };
+
+
+
+
+
     return (
         <div className={`fixed inset-0 z-50 transition-transform transform ${activeMenu ? 'translate-x-0' : '-translate-x-full'} md:relative md:translate-x-0 w-64 md:w-96 h-full bg-black text-white flex flex-col`}>
             <div className="flex items-center justify-center my-7 px-4">
@@ -37,8 +56,8 @@ const Sidebar = ({ setContent, toggleMenu, activeMenu }) => {
                     Referrals
                 </button>
                
-                <div className='flex flex-col text-left px-5 '>
-                    <button className="text-[#828080] font-normal py-4 text-left w-64 rounded-lg">
+                <div className='flex flex-col text-left px-5 mt-5 '>
+                    <button  onClick={handleLogout} className="text-[#828080] my-4 border-white border-[1px] font-medium py-3 px-5 text-left  rounded-lg">
                         Log Out
                     </button>
                     <div className='text-[#5f5e5e] font-normal'>

@@ -34,6 +34,10 @@ const AuthComponent = () => {
         return;
       }
 
+
+
+
+
       const res = await fetch("api/register", {
         method: "POST",
         headers: {
@@ -47,7 +51,7 @@ const AuthComponent = () => {
       if (res.ok) {
         const form = e.target;
         form.reset();
-        router.push("/dashboard");
+        setError("Account created now go to signin.");
       } else {
         setError(data.message || "An error occurred.");
       }
@@ -57,6 +61,8 @@ const AuthComponent = () => {
     }
   };
 
+
+  
   const handleLogin = async (e) => {
     e.preventDefault();
 
@@ -79,6 +85,7 @@ const AuthComponent = () => {
       if (res.ok) {
         const form = e.target;
         form.reset();
+        document.cookie = "user-authenticated=true; path=/";
         router.push("/dashboard");
       } else {
         setError(data.message || "Invalid credentials.");
