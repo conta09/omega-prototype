@@ -11,7 +11,7 @@ import Profit from "./components/Profit";
 export default function Home() {
  
   return (
-    <main className="bg-black">
+    <main className="">
     <StickyNavbar />
      <HeroSection />
      <About />

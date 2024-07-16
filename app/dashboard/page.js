@@ -4,6 +4,7 @@ import Layout from '../components/Layout';
 import HomePage from '../components/HomePage';
 import Wallet from '../components/Wallet';
 import PaymentHistory from '../components/PaymentHistory';
+import ReferralCode from '../components/ReferralCode';
 const Home = () => {
   const [content, setContent] = useState('home');
   const [balance, setBalance] = useState(0); // Add balance state
@@ -34,7 +35,7 @@ const Home = () => {
       case 'transactionHistory':
         return <PaymentHistory />;
       case 'referrals':
-        return <div>Referrals Content</div>;
+        return <ReferralCode />;
       default:
         return <div>Home Content</div>;
     }

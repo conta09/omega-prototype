@@ -2,9 +2,8 @@ import { useState } from 'react';
 import CryptoTransaction from './CryptoTransaction';
 import { SiLetsencrypt } from "react-icons/si";
 import { IoCloseCircleOutline } from "react-icons/io5";
-
+import Trade from './Trade';
 import Image from 'next/image';
-
 const Wallet = ({ balance, updateBalance }) => {
   const [action, setAction] = useState(null);
   const [amount, setAmount] = useState('');
@@ -43,16 +42,24 @@ const Wallet = ({ balance, updateBalance }) => {
   };
 
   return (
-    <div className="p-6 max-w-sm rounded-xl shadow-md space-y-4 text-white">
+    <div className="p-4  rounded-xl shadow-md space-y-4 text-white">
       <div>
-        <h2 className="text-[1rem] font-normal ">Select Gateway</h2>
+        <h2 className="text-[0.9rem] font-normal text-[#b3b2b2]">SELECT GATEWAY</h2>
       </div>
-      <div className='flex space-x-4 w-1/2'>
+      <div className=' flex '>
         <button onClick={() => handleGatewayClick('Momo')} className='text-black font-semibold py-2 px-4 rounded'>
-          <Image src="/momo.jpeg" alt="Momo" width={80} height={80} />
+        <div className='bg-white'>
+        <Image
+                    src="/momo.jpeg"
+                    alt="logo"
+                    width={50}
+                    height={50}
+                    className='p-4'
+                />
+        </div>
         </button>
-        <button onClick={() => handleGatewayClick('Binance')} className='bg-white text-black font-semibold py-2 px-4 rounded'>
-          <Image src="/binance.jpg" alt="Binance" width={80} height={80} />
+        <button onClick={() => handleGatewayClick('Binance')} className=' text-black font-semibold py-2 px-4 rounded'>
+        <Trade />
         </button>
       </div>
 
@@ -61,13 +68,13 @@ const Wallet = ({ balance, updateBalance }) => {
           <div className="flex space-x-4 mt-4">
             <button
               onClick={() => handleActionClick('Deposit')}
-              className="bg-white hover:bg-[#c9c8c8] text-black font-semibold py-2 px-4 rounded w-10"
+              className="bg-white hover:bg-[#c9c8c8] text-black font-semibold py-2 px-4 rounded w-1/3"
             >
               Deposit
             </button>
             <button
               onClick={() => handleActionClick('Withdraw')}
-              className=" hover:bg-white hover:text-black text-white font-bold py-2 px-4 border-[1px] border-white rounded"
+              className=" hover:bg-white hover:text-black text-white w-1/3 font-bold py-2 px-4 border-[1px] border-white rounded"
             >
               Withdraw
             </button>

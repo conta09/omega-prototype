@@ -1,6 +1,5 @@
 import React from 'react';
 import { FaHandHoldingUsd, FaRegUser } from 'react-icons/fa';
-import { RiMenu4Fill } from 'react-icons/ri';
 
 const TopBar = ({ balance, handleDepositClick, handleWithdrawClick }) => {
   return (
@@ -21,7 +20,7 @@ const TopBar = ({ balance, handleDepositClick, handleWithdrawClick }) => {
         </div>
       </div>
       <div className="mt-2">
-        <p className="text-[#686868] text-[0.9rem]">Available Balance</p>
+        <p className="text-[#686868] text-[0.9rem]">Total Balance</p>
         <p className="text-2xl py-3 font-bold">${balance}</p>
       </div>
       <div className="flex space-x-4 my-5">

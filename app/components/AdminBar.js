@@ -1,7 +1,6 @@
 import React from 'react'
 import { FaLink, FaUsers, FaAddressBook, FaFileInvoiceDollar, FaUser, FaCalendarAlt, FaQuestionCircle } from 'react-icons/fa';
 import { GrHomeRounded } from "react-icons/gr";
-
 import Image from 'next/image';
 const AdminBar = () => {
     return (
@@ -9,11 +8,11 @@ const AdminBar = () => {
           <div className="text-2xl py-3 font-bold mb-6">ADMIN</div>
           <div className="flex flex-col items-center mb-8">
           <Image
-        src="/profile.png"
-        alt="logo"
-        width={100}
-        height={100}
-      />     
+                    src="/omega-logo.png"
+                    alt="logo"
+                    width={120}
+                    height={120}
+                />
            
             <div className="text-sm text-teal-400">Admin Name</div>
           </div>
@@ -33,7 +32,7 @@ const AdminBar = () => {
             </div>
             <div className="w-full flex items-center space-x-2 p-2 rounded-md hover:bg-gray-800">
             <FaLink className="mx-5 text-gray-400" />
-            <span className='mx-5'>Refferals</span>
+            <span className='mx-5'>All transactions</span>
             </div>
            
           </div>

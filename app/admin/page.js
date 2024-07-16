@@ -1,6 +1,6 @@
 import React from 'react';
 import AdminBar from '../components/AdminBar';
-
+import EmailsList from '../components/EmailsList';
 function App() {
   return (
     <div className="flex">
@@ -9,6 +9,7 @@ function App() {
         {/* Main content goes here */}
         <h1 className='text-3xl font-medium px-5'>DASHBOARD</h1>
         <p className='px-5 mt-2 text-teal-400 text-[0.8rem]'>Welcome to your admin dashboard</p>
+        <EmailsList />
       </div>
     </div>
   );
