@@ -8,6 +8,7 @@ import AuthOptions from "./components/AuthOptions";
 import UserInfo from "./components/UserInfo";
 import FAQ from "./components/Faqs";
 import Profit from "./components/Profit";
+import SecurityInfo from "./components/SecurityInfo";
 export default function Home() {
  
   return (
@@ -15,6 +16,7 @@ export default function Home() {
     <StickyNavbar />
      <HeroSection />
      <About />
+     <SecurityInfo />
      <Profit />
       <AuthOptions />
       <UserInfo />

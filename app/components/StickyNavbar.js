@@ -77,7 +77,7 @@ export function StickyNavbar() {
               <Button
                 variant="gradient"
                 size="sm"
-                className="hidden lg:inline-block bg-white text-black"
+                className="hidden lg:inline-block bg-[#3540bf] text-white"
                 onClick={() => setShowAuth(true)} // Show the AuthComponent
 
               >
