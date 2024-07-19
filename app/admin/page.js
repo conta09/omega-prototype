@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import AdminBar from '../components/AdminBar';
 import EmailsList from '../components/EmailsList';
+import StatsCards from '../components/StatsCards';
 function App() {
   const [activeContent, setActiveContent] = useState('Dashboard');
 
@@ -12,6 +13,9 @@ function App() {
           <div>
             <h1 className='text-3xl font-medium px-5'>DASHBOARD</h1>
             <p className='px-5 mt-2 text-teal-400 text-[0.8rem]'>Welcome to your admin dashboard</p>
+            <div className='my-5'>
+            <StatsCards />
+            </div>
             
           </div>
         );

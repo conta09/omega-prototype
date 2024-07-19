@@ -3,6 +3,7 @@ import CryptoTransaction from './CryptoTransaction';
 import { SiLetsencrypt } from "react-icons/si";
 import { IoCloseCircleOutline } from "react-icons/io5";
 import Trade from './Trade';
+import PaymentPage from './PaymentPage';
 import Image from 'next/image';
 const Wallet = ({ balance, updateBalance }) => {
   const [action, setAction] = useState(null);
@@ -107,7 +108,8 @@ const Wallet = ({ balance, updateBalance }) => {
 
       {gateway === 'Binance' && (
         <div className="mt-4">
-          {/* Button to show crypto transaction popup */}
+          <PaymentPage />
+          {/* Button to show crypto transaction popup 
           <button
             onClick={handleShowPopup}
             className="flex hover:bg-white hover:text-black border-white border-[1px] font-medium py-3 px-5 rounded-lg"
@@ -115,8 +117,8 @@ const Wallet = ({ balance, updateBalance }) => {
             <SiLetsencrypt className='mx-3 ' />
             Proceed to Transaction
           </button>
-
-          {/* Popup for crypto transaction */}
+           */}
+          {/* Popup for crypto transaction 
           {showCryptoPopup && (
             <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center">
               <div className=" p-6 rounded-xl shadow-md">
@@ -130,6 +132,7 @@ const Wallet = ({ balance, updateBalance }) => {
               </div>
             </div>
           )}
+          */}
         </div>
       )}
     </div>
