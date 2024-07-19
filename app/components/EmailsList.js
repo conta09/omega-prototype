@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import { useEffect, useState } from 'react';
 
 const EmailsList = () => {
@@ -16,24 +16,20 @@ const EmailsList = () => {
 
   return (
     <div>
-      <h1 className='text-2xl font-medium mb-4 text-teal-400'>User Emails</h1>
-      <div className="overflow-x-auto">
-        <table className="min-w-full  border border-gray-200">
-          <thead>
-            <tr>
-              <th className="px-4 py-2 border-b-2 border-gray-200">Index</th>
-              <th className="px-4 py-2 border-b-2 border-gray-200">Email</th>
-            </tr>
-          </thead>
-          <tbody>
-            {emails.map((email, index) => (
-              <tr key={index} className="text-center">
-                <td className="px-4 py-2 border-b border-gray-200">{index + 1}</td>
-                <td className="px-4 py-2 border-b border-gray-200">{email}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
+      <h1 className='text-2xl font-medium mb-4 text-teal-400'>Users</h1>
+      <div className="space-y-4">
+        {emails.map((email, index) => (
+          <div key={index} className="flex items-center justify-between bg-[#1E1E1E] p-4 rounded-lg shadow-lg">
+            <div className="flex items-center">
+              <div className="bg-black text-white w-10 h-10 flex items-center justify-center rounded-full mr-4">
+                {index + 1}
+              </div>
+              <div>
+                <p className="text-gray-400">{email}</p>
+              </div>
+            </div>
+          </div>
+        ))}
       </div>
     </div>
   );

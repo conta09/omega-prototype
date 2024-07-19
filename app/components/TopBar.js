@@ -1,7 +1,7 @@
 import React from 'react';
-import { FaHandHoldingUsd, FaRegUser } from 'react-icons/fa';
+import { FaHandHoldingUsd, FaRegUser, FaBitcoin } from 'react-icons/fa';
 
-const TopBar = ({ balance, handleDepositClick, handleWithdrawClick }) => {
+const TopBar = ({ balance, cryptoBalance, handleDepositClick, handleWithdrawClick }) => {
   return (
     <div className="bg-[#242424] text-white p-6 rounded-[35px] max-w-[47rem] mx-auto">
       <div className="flex justify-between items-center">
@@ -15,13 +15,18 @@ const TopBar = ({ balance, handleDepositClick, handleWithdrawClick }) => {
             <FaRegUser className="text-xl sm:text-lg m-2" />
           </button>
           */}
-          
-         
         </div>
       </div>
       <div className="mt-2">
         <p className="text-[#686868] text-[0.9rem]">Total Balance</p>
         <p className="text-2xl py-3 font-bold">${balance}</p>
+      </div>
+      <div className="mt-2">
+        <p className="text-[#686868] text-[0.9rem]">Crypto Balance</p>
+        <div className="flex items-center space-x-2">
+          <FaBitcoin className="text-yellow-500 text-2xl" />
+          <p className="text-2xl py-3 font-bold">{cryptoBalance} BTC</p>
+        </div>
       </div>
       <div className="flex space-x-4 my-5">
         <button
