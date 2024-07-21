@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 
 const EmailsList = () => {
   const [emails, setEmails] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     const fetchEmails = async () => {
@@ -13,6 +14,29 @@ const EmailsList = () => {
 
     fetchEmails();
   }, []);
+
+  const deleteEmail = async (email) => {
+    setLoading(true);
+    try {
+      const response = await fetch('/api/emails', {
+        method: 'DELETE',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email }),
+      });
+
+      if (response.ok) {
+        setEmails((prevEmails) => prevEmails.filter((e) => e !== email));
+      } else {
+        console.error('Failed to delete email');
+      }
+    } catch (error) {
+      console.error('Error deleting email:', error);
+    } finally {
+      setLoading(false);
+    }
+  };
 
   return (
     <div>
@@ -28,6 +52,13 @@ const EmailsList = () => {
                 <p className="text-gray-400">{email}</p>
               </div>
             </div>
+            <button
+              onClick={() => deleteEmail(email)}
+              className="bg-red-500 text-white px-3 py-1 rounded-lg hover:bg-red-600"
+              disabled={loading}
+            >
+              Delete
+            </button>
           </div>
         ))}
       </div>

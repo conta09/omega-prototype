@@ -17,3 +17,21 @@ export async function GET() {
     return NextResponse.json({ error: 'Failed to fetch emails' }, { status: 500 });
   }
 }
+
+export async function DELETE(req) {
+  try {
+    const { email } = await req.json();
+    await connectMongoDB();
+
+    // Delete user with the specified email
+    const deletedUser = await User.findOneAndDelete({ email });
+
+    if (!deletedUser) {
+      return NextResponse.json({ error: 'User not found' }, { status: 404 });
+    }
+
+    return NextResponse.json({ message: 'Email deleted successfully' });
+  } catch (error) {
+    return NextResponse.json({ error: 'Failed to delete email' }, { status: 500 });
+  }
+}
