@@ -1,9 +1,7 @@
 import { useState } from 'react';
-import CryptoTransaction from './CryptoTransaction';
-import { SiLetsencrypt } from "react-icons/si";
-import { IoCloseCircleOutline } from "react-icons/io5";
+
+import CreateCharge from './CreateCharge';
 import Trade from './Trade';
-import PaymentPage from './PaymentPage';
 import Image from 'next/image';
 const Wallet = ({ balance, updateBalance }) => {
   const [action, setAction] = useState(null);
@@ -108,7 +106,7 @@ const Wallet = ({ balance, updateBalance }) => {
 
       {gateway === 'Binance' && (
         <div className="mt-4">
-          <PaymentPage />
+          <CreateCharge />
           {/* Button to show crypto transaction popup 
           <button
             onClick={handleShowPopup}

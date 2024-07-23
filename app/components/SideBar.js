@@ -61,9 +61,6 @@ const Sidebar = ({ setContent, toggleMenu, activeMenu }) => {
                         Log Out
                     </button>
                     <div className='text-[#5f5e5e] font-normal'>
-                        id:<span>AS2355c</span>
-                    </div>
-                    <div className='text-[#5f5e5e] font-normal'>
                         Email:<span>johndoe@gmail.com</span>
                     </div>
                 </div>
