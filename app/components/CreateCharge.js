@@ -21,7 +21,7 @@ export default function CreateCharge() {
 
     const data = await response.json();
     if (response.ok) {
-      setResponseMessage(`Charge created successfully: ${JSON.stringify(data)}`);
+      setResponseMessage(`Redirecting to payment`);
       // Redirect user to hosted_url to complete payment
       window.location.href = data.hosted_url;
     } else {
@@ -74,7 +74,7 @@ export default function CreateCharge() {
         </button>
       </form>
       {responseMessage && (
-        <div className="mt-6 p-4 bg-red-600 text-white rounded-md break-words">
+        <div className="mt-6 p-4 bg-green-600 text-white rounded-md break-words">
           {responseMessage}
         </div>
       )}

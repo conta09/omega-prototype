@@ -57,7 +57,7 @@ const AdminBar = ({ onMenuClick }) => {
                         onClick={() => handleMenuClick('Approvals')}
                     >
                         <FaAddressBook className="mx-5 h-6 text-gray-400" />
-                        <span className='mx-5'>Approvals</span>
+                        <span className='mx-5'>Update Users</span>
                     </button>
                     <button
                         className={`w-full flex items-center space-x-2 p-2 rounded-md hover:bg-gray-800 ${activeMenu === 'All transactions' ? 'bg-gray-800' : ''}`}

@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import AdminBar from '../components/AdminBar';
 import EmailsList from '../components/EmailsList';
 import StatsCards from '../components/StatsCards';
+import UpdateBalanceForm from '../components/UpdateBalanceForm';
 function App() {
   const [activeContent, setActiveContent] = useState('Dashboard');
 
@@ -22,7 +23,7 @@ function App() {
       case 'Manage Users':
         return <EmailsList />;
       case 'Approvals':
-        return <div>approvals</div>;
+        return <UpdateBalanceForm />;
       case 'All transactions':
         return <div>Transactions</div>;
       default:

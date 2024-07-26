@@ -4,6 +4,8 @@ import { useRouter } from "next/navigation";
 
 const AuthComponent = () => {
   const [isLogin, setIsLogin] = useState(true);
+  const [name, setName] = useState("");
+  const [phoneNumber, setPhoneNumber] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
@@ -13,7 +15,7 @@ const AuthComponent = () => {
   const handleRegister = async (e) => {
     e.preventDefault();
 
-    if (!email || !password) {
+    if (!name || !phoneNumber || !email || !password) {
       setError("All fields are necessary.");
       return;
     }
@@ -34,16 +36,12 @@ const AuthComponent = () => {
         return;
       }
 
-
-
-
-
       const res = await fetch("api/register", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ email, password }),
+        body: JSON.stringify({ name, phoneNumber, email, password }),
       });
 
       const data = await res.json();
@@ -61,8 +59,6 @@ const AuthComponent = () => {
     }
   };
 
-
-  
   const handleLogin = async (e) => {
     e.preventDefault();
 
@@ -117,6 +113,28 @@ const AuthComponent = () => {
           {isLogin ? 'SIGN IN, WE ARE WAITING FOR YOU' : 'Register'}
         </h2>
         <form onSubmit={isLogin ? handleLogin : handleRegister}>
+          {!isLogin && (
+            <>
+              <div className="mb-4">
+                <label className="block text-gray-700">Name</label>
+                <input
+                  onChange={(e) => setName(e.target.value)}
+                  type="text"
+                  className="w-full px-3 py-2 border rounded-lg text-black"
+                  placeholder="Enter your name"
+                />
+              </div>
+              <div className="mb-4">
+                <label className="block text-gray-700">Phone Number</label>
+                <input
+                  onChange={(e) => setPhoneNumber(e.target.value)}
+                  type="text"
+                  className="w-full px-3 py-2 border rounded-lg text-black"
+                  placeholder="Enter your phone number"
+                />
+              </div>
+            </>
+          )}
           <div className="mb-4">
             <label className="block text-gray-700">Email</label>
             <input
