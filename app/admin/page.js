@@ -4,6 +4,7 @@ import AdminBar from '../components/AdminBar';
 import EmailsList from '../components/EmailsList';
 import StatsCards from '../components/StatsCards';
 import UpdateBalanceForm from '../components/UpdateBalanceForm';
+import Transactions from '../components/FetchTransactions';
 function App() {
   const [activeContent, setActiveContent] = useState('Dashboard');
 
@@ -25,7 +26,7 @@ function App() {
       case 'Approvals':
         return <UpdateBalanceForm />;
       case 'All transactions':
-        return <div>Transactions</div>;
+        return <Transactions />;
       default:
         return (
           <div>

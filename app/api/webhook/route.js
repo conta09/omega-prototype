@@ -1,4 +1,3 @@
-// /app/api/webhook/route.js
 import { NextResponse } from 'next/server';
 import CoinbaseCommerce from 'coinbase-commerce-node';
 import { connectMongoDB } from '@/lib/mongodb';
@@ -7,6 +6,10 @@ import Payment from '@/models/Payment';
 const { Webhook } = CoinbaseCommerce;
 
 const webhookSecret = process.env.WEBHOOK_SECRET;
+
+// No need for the deprecated `export const config`
+
+export const runtime = 'nodejs'; // Update the runtime if necessary
 
 export async function POST(request) {
   const sigHeader = request.headers.get('X-CC-Webhook-Signature');
