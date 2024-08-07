@@ -2,19 +2,38 @@
 import { useState } from 'react';
 
 function UpdateBalanceForm() {
-  const [userId, setUserId] = useState('');
+  const [userEmail, setUserEmail] = useState('');
   const [newBalance, setNewBalance] = useState('');
   const [message, setMessage] = useState('');
+  const [userData, setUserData] = useState(null);
 
-  const handleSubmit = async (e) => {
+  const handleFetchUserData = async () => {
+    const response = await fetch(`/api/getUserByEmail?email=${userEmail}`);
+    const data = await response.json();
+
+    if (response.ok) {
+      setUserData(data.user);
+      setMessage('');
+    } else {
+      setUserData(null);
+      setMessage(`Error: ${data.error}`);
+    }
+  };
+
+  const handleUpdateBalance = async (e) => {
     e.preventDefault();
-    
+
+    if (!userData) {
+      setMessage('Please fetch user data first');
+      return;
+    }
+
     const response = await fetch('/api/updateBalance', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ userId, newBalance: parseFloat(newBalance) }),
+      body: JSON.stringify({ userId: userData._id, newBalance: parseFloat(newBalance) }),
     });
 
     const data = await response.json();
@@ -27,35 +46,83 @@ function UpdateBalanceForm() {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-4">
-      <div>
-        <label className="block text-sm font-medium ">User ID:</label>
-        <input
-          type="text"
-          value={userId}
-          onChange={(e) => setUserId(e.target.value)}
-          required
-          className="mt-1 block w-2/3 border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-        />
+    <div>
+      <div className="space-y-4">
+        <div>
+          <p className='text-sm font-medium py-4'>Enter user email</p>
+          <label className="block text-sm font-medium">User Email:</label>
+          <input
+            type="text"
+            value={userEmail}
+            onChange={(e) => setUserEmail(e.target.value)}
+            required
+            className="mt-1 block w-2/3 border text-black border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+          />
+          <button
+            type="button"
+            onClick={handleFetchUserData}
+            className="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 mt-2"
+          >
+            Display
+          </button>
+        </div>
       </div>
-      <div>
-        <label className="block text-sm font-medium ">Add to Balance:</label>
-        <input
-          type="number"
-          value={newBalance}
-          onChange={(e) => setNewBalance(e.target.value)}
-          required
-          className="mt-1 block w-2/3 border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-        />
-      </div>
-      <button
-        type="submit"
-        className="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-      >
-        Update Balance
-      </button>
-      {message && <p className="mt-2 text-sm text-red-600">{message}</p>}
-    </form>
+
+      {userData && (
+        <div className="mt-4 space-y-4">
+          <div>
+            <label className="block text-sm font-medium">Name:</label>
+            <p className="mt-1 block w-2/3 border border-gray-300 rounded-md shadow-sm py-2 px-3 sm:text-sm">{userData.name}</p>
+          </div>
+          <div>
+            <label className="block text-sm font-medium">Phone Number:</label>
+            <p className="mt-1 block w-2/3 border border-gray-300 rounded-md shadow-sm py-2 px-3 sm:text-sm">{userData.phoneNumber}</p>
+          </div>
+          <div>
+            <label className="block text-sm font-medium">Email:</label>
+            <p className="mt-1 block w-2/3 border border-gray-300 rounded-md shadow-sm py-2 px-3 sm:text-sm">{userData.email}</p>
+          </div>
+          <div>
+            <label className="block text-sm font-medium">Crypto Balance:</label>
+            <p className="mt-1 block w-2/3 border border-gray-300 rounded-md shadow-sm py-2 px-3 sm:text-sm">{userData.cryptoBalance}</p>
+          </div>
+          <div>
+            <label className="block text-sm font-medium">Available Balance:</label>
+            <p className="mt-1 block w-2/3 border border-gray-300 rounded-md shadow-sm py-2 px-3 sm:text-sm">{userData.availableBalance}</p>
+          </div>
+        </div>
+      )}
+
+      <form onSubmit={handleUpdateBalance} className="mt-4 space-y-4">
+        <div>
+          <label className="block text-sm font-medium">Add to Balance:</label>
+          <input
+            type="number"
+            value={newBalance}
+            onChange={(e) => setNewBalance(e.target.value)}
+            required
+            className="mt-1 block w-2/3 border text-black border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+          />
+        </div>
+        <div className='flex gap-5'>
+        <button
+          type="submit"
+          className="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+        >
+          Update Balance
+        </button>
+
+        <button
+          type="submit"
+          className="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+        >
+          Update CryptoBalance
+        </button>
+        </div>
+       
+        {message && <p className="mt-2 text-sm text-red-600">{message}</p>}
+      </form>
+    </div>
   );
 }
 

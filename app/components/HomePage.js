@@ -23,7 +23,7 @@ const HomePage = () => {
     };
 
     fetchPrices();
-    const interval = setInterval(fetchPrices, 60000); // Update prices every 60 seconds
+    const interval = setInterval(fetchPrices, 86400000); // Update prices every 24 hours
 
     return () => clearInterval(interval); // Cleanup interval on component unmount
   }, []);

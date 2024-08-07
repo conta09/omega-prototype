@@ -1,4 +1,3 @@
-// models/user.js
 import mongoose, { Schema, models } from "mongoose";
 
 const userSchema = new Schema(
@@ -18,6 +17,14 @@ const userSchema = new Schema(
     password: {
       type: String,
       required: true,
+    },
+    cryptoBalance: {
+      type: Number,
+      default: 0,
+    },
+    availableBalance: {
+      type: Number,
+      default: 0,
     },
   },
   { timestamps: true }
