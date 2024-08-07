@@ -18,15 +18,18 @@ const TopBar = ({ balance, cryptoBalance, handleDepositClick, handleWithdrawClic
         </div>
       </div>
       <div className="mt-2">
-        <p className="text-[#686868] text-[0.9rem]">Total Balance</p>
-        <p className="text-2xl py-3 font-bold">${balance}</p>
+        <p className="text-[#686868] text-[0.9rem]">Total Balance in FRW</p>
+        <p className="text-xl py-1 font-semibold">{balance}RWF</p>
+        <p className='text-[#4ab953] font-normal text-[0.8rem]'>pending</p>
       </div>
       <div className="mt-2">
         <p className="text-[#686868] text-[0.9rem]">Crypto Balance</p>
         <div className="flex items-center space-x-2">
           <FaBitcoin className="text-yellow-500 text-2xl" />
-          <p className="text-2xl py-3 font-bold">{cryptoBalance} BTC</p>
+          <p className="text-2xl py1 font-bold">{cryptoBalance} BTC</p>
         </div>
+        <p className='text-[#4ab953] font-normal text-[0.8rem]'>pending</p>
+
       </div>
       <div className="flex space-x-4 my-5">
         <button

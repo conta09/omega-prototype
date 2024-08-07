@@ -64,7 +64,7 @@ const Sidebar = ({ setContent, toggleMenu, activeMenu }) => {
                         Email:<span>johndoe@gmail.com</span>
                     </div>
                     <div className='text-[#5f5e5e] font-normal'>
-                        Name:<span>johndoe@gmail.com</span>
+                        Name:<span>johndoe</span>
                     </div>
                 </div>
             </div>
