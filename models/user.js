@@ -26,6 +26,11 @@ const userSchema = new Schema(
       type: Number,
       default: 0,
     },
+    referralCode: {
+      type: String,
+      unique: true,
+      sparse: true, // Allows for null values until a code is generated
+    },
   },
   { timestamps: true }
 );

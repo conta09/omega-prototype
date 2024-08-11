@@ -39,9 +39,6 @@ const handler = NextAuth({
       return token;
     },
   },
-  pages: {
-    signIn: '/login',  // Path to the login page
-  },
   secret: process.env.NEXTAUTH_SECRET,
 });
 

@@ -53,12 +53,20 @@ const AdminBar = ({ onMenuClick }) => {
                         <span className='mx-5'>Manage Users</span>
                     </button>
                     <button
+                        className={`w-full flex items-center space-x-2 p-2 rounded-md hover:bg-gray-800 ${activeMenu === 'Refferals' ? 'bg-gray-800' : ''}`}
+                        onClick={() => handleMenuClick('Referrals')}
+                    >
+                        <FaUsers className="mx-5 h-6 text-gray-400" />
+                        <span className='mx-5'>User Refferals</span>
+                    </button>
+                    <button
                         className={`w-full flex items-center space-x-2 p-2 rounded-md hover:bg-gray-800 ${activeMenu === 'Approvals' ? 'bg-gray-800' : ''}`}
                         onClick={() => handleMenuClick('Approvals')}
                     >
                         <FaAddressBook className="mx-5 h-6 text-gray-400" />
                         <span className='mx-5'>Update Users</span>
                     </button>
+                    
                     <button
                         className={`w-full flex items-center space-x-2 p-2 rounded-md hover:bg-gray-800 ${activeMenu === 'All transactions' ? 'bg-gray-800' : ''}`}
                         onClick={() => handleMenuClick('All transactions')}

@@ -3,7 +3,7 @@ import { FaHandHoldingUsd, FaRegUser, FaBitcoin } from 'react-icons/fa';
 
 const TopBar = ({ balance, cryptoBalance, handleDepositClick, handleWithdrawClick }) => {
   return (
-    <div className="bg-[#242424] text-white p-6 rounded-[35px] max-w-[47rem] mx-auto">
+    <div className="bg-[#141318] text-white p-6 rounded-[35px] max-w-[47rem] mx-auto">
       <div className="flex justify-between items-center">
         <h1 className="text-[1.2rem] font-semibold py-5">Dashboard</h1>
         <div className="flex space-x-2 mx-2">
