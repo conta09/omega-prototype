@@ -11,7 +11,7 @@ const HomePage = () => {
         const response = await axios.get('https://api.coingecko.com/api/v3/coins/markets', {
           params: {
             vs_currency: 'usd',
-            ids: 'bitcoin,ethereum,solana,cardano,ripple,polkadot,dogecoin',
+            ids: 'bitcoin,ethereum,solana,cardano,ripple,polkadot,dogecoin,tether',
           },
         });
         setPrices(response.data);

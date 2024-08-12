@@ -31,10 +31,13 @@ const Wallet = ({ balance, updateBalance }) => {
         <h2 className="text-[0.9rem] font-normal text-[#b3b2b2]">SELECT GATEWAY</h2>
       </div>
       <div className='flex'>
-        <button onClick={() => handleGatewayClick('Momo')} className='text-black font-semibold py-2 px-4 rounded'>
+        <button onClick={() => handleGatewayClick('Momo')} className='flex items-center bg-[#141318]  font-semibold py-2 px-4 rounded'>
           <div className='bg-white'>
             <Image src="/momo.jpeg" alt="logo" width={50} height={50} className='p-4' />
           </div>
+          <div className="text-left ml-4 p-2">
+        <h2 className="text-sm font-normal text-[#BFD48A]">Momo payment</h2>
+      </div>
         </button>
         <button onClick={() => handleGatewayClick('Binance')} className='text-black font-semibold py-2 px-4 rounded'>
           <Trade />

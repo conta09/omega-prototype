@@ -3,9 +3,9 @@ import { FaHandHoldingUsd, FaRegUser, FaBitcoin } from 'react-icons/fa';
 
 const TopBar = ({ balance, cryptoBalance, handleDepositClick, handleWithdrawClick }) => {
   return (
-    <div className="bg-[#141318] text-white p-6 rounded-[35px] max-w-[47rem] mx-auto">
-      <div className="flex justify-between items-center">
-        <h1 className="text-[1.2rem] font-semibold py-5">Dashboard</h1>
+    <div className="bg-[#141318] text-white p-6 rounded-[35px]  max-w-[28rem] lg:max-w-[50rem] mx-auto">
+      <div className="flex  items-center">
+        <h1 className="text-[1.2rem] text-[#BFD48A] font-normal py-5">Dashboard</h1>
         <div className="flex space-x-2 mx-2">
           {/* 
           <button className="bg-black rounded-3xl">
@@ -18,17 +18,16 @@ const TopBar = ({ balance, cryptoBalance, handleDepositClick, handleWithdrawClic
         </div>
       </div>
       <div className="mt-2">
-        <p className="text-[#686868] text-[0.9rem]">Total Balance in FRW</p>
-        <p className="text-xl py-1 font-semibold">{balance}RWF</p>
-        <p className='text-[#4ab953] font-normal text-[0.8rem]'>pending</p>
+        <p className="font-thin text-[0.8rem]">Total Balance in FRW</p>
+        <p className="text-xl py-1 font-semibold">{balance} <span className='text-[#6e6d6d]'>RWF</span></p>
+        <p className='text-[#4ab953] hidden font-normal text-[0.8rem]'>pending</p>
       </div>
-      <div className="mt-2">
-        <p className="text-[#686868] text-[0.9rem]">Crypto Balance</p>
+      <div className="pt-4">
+        <p className="font-thin text-[0.8rem]">Crypto Balance</p>
         <div className="flex items-center space-x-2">
-          <FaBitcoin className="text-yellow-500 text-2xl" />
-          <p className="text-2xl py1 font-bold">{cryptoBalance} BTC</p>
+          <p className="text-2xl py1 font-semibold">{cryptoBalance}0.00  <span className='text-[#6e6d6d]'>USDT</span></p>
         </div>
-        <p className='text-[#4ab953] font-normal text-[0.8rem]'>pending</p>
+        <p className='text-[#4ab953] font-normal hidden text-[0.8rem]'>pending</p>
 
       </div>
       <div className="flex space-x-4 my-5">

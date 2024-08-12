@@ -30,7 +30,7 @@ export default function CreateCharge() {
   };
 
   return (
-    <div className="max-w-md  bg-gray-800 p-6 rounded-lg">
+    <div className="max-w-md  bg-[#141318] p-6 rounded-lg">
       <h1 className="text-2xl font-bold text-center text-white mb-6">Create Charge</h1>
       <form onSubmit={handleSubmit} className="space-y-4">
         <div>
