@@ -30,7 +30,7 @@ const WithdrawRequest = ({ onClose }) => {
               <ol className="list-decimal list-inside text-left text-gray-700">
                 <li>Copy the number below: <strong>0 788 819 111</strong></li>
                 <li>Send the amount of money to this number.</li>
-                <li>Take a screenshot of the transaction and send it to WhatsApp: <strong>0 788 819 111</strong></li>
+                <li>Take a screenshot of the transaction and send it to WhatsApp: <strong>0 788 819 111cd</strong></li>
                 <li>Await admin approval.</li>
               </ol>
             </div>
