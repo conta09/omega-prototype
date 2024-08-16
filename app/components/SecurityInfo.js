@@ -6,7 +6,7 @@ import { GoStack } from "react-icons/go";
 
 const SecurityInfo = () => {
     return (
-      <div className="bg-[#151718] text-white py-20 rounded-lg shadow-lg">
+      <div className="sm:h-[90vh] bg-gradient-to-r from-gray-900 to-black text-white py-20 rounded-lg shadow-lg">
         <h2 className="text-2xl font-medium mb-6 text-center">
           Your funds are <span className="text-blue-500">safe and integrated</span>
         </h2>

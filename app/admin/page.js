@@ -6,6 +6,7 @@ import StatsCards from '../components/StatsCards';
 import UpdateBalanceForm from '../components/UpdateBalanceForm';
 import Transactions from '../components/FetchTransactions';
 import UserRefferals from '../components/UserRefferals';
+import Withdraws from '../components/Withdaws';
 function App() {
   const [activeContent, setActiveContent] = useState('Dashboard');
 
@@ -26,6 +27,8 @@ function App() {
         return <EmailsList />;
       case 'Approvals':
         return <UpdateBalanceForm />;
+        case 'Withdraws':
+        return <Withdraws />;
         case 'Referrals':
           return <UserRefferals />;
       case 'All transactions':

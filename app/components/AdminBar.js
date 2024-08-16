@@ -54,6 +54,13 @@ const AdminBar = ({ onMenuClick }) => {
                     </button>
                     <button
                         className={`w-full flex items-center space-x-2 p-2 rounded-md hover:bg-gray-800 ${activeMenu === 'Refferals' ? 'bg-gray-800' : ''}`}
+                        onClick={() => handleMenuClick('Withdraws')}
+                    >
+                        <FaUsers className="mx-5 h-6 text-gray-400" />
+                        <span className='mx-5'>Withdraw requests</span>
+                    </button>
+                    <button
+                        className={`w-full flex items-center space-x-2 p-2 rounded-md hover:bg-gray-800 ${activeMenu === 'Refferals' ? 'bg-gray-800' : ''}`}
                         onClick={() => handleMenuClick('Referrals')}
                     >
                         <FaUsers className="mx-5 h-6 text-gray-400" />

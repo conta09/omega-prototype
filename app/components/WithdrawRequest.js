@@ -28,10 +28,21 @@ const WithdrawRequest = ({ onClose }) => {
             <div className="bg-gray-100 p-4 rounded-lg">
               <h3 className="text-base font-semibold mb-2 text-black">MoMo Withdrawal</h3>
               <ol className="list-decimal list-inside text-left text-gray-700">
-                <li>Copy the number below: <strong>0 788 819 111</strong></li>
-                <li>Send the amount of money to this number.</li>
-                <li>Take a screenshot of the transaction and send it to WhatsApp: <strong>0 788 819 111cd</strong></li>
-                <li>Await admin approval.</li>
+              <form className="text-left text-gray-700">
+                <label className="block mb-2">
+                  Email:
+                  <input type="text" className="w-full p-2 mt-1 rounded-lg border border-gray-300" />
+                </label>
+                <label className="block mb-2">
+                  Phone number:
+                  <input type="text" className="w-full p-2 mt-1 rounded-lg border border-gray-300" />
+                </label>
+                <label className="block mb-2">
+                  Amount (RWF):
+                  <input type="text" className="w-full p-2 mt-1 rounded-lg border border-gray-300" />
+                </label>
+              </form>
+              <li>Please click proceed to continue with withdraw and await admin approval</li>
               </ol>
             </div>
           )}
@@ -40,6 +51,10 @@ const WithdrawRequest = ({ onClose }) => {
             <div className="bg-gray-100 p-4 rounded-lg">
               <h3 className="text-base font-semibold mb-2 text-black">Crypto Withdrawal</h3>
               <form className="text-left text-gray-700">
+              <label className="block mb-2">
+                  Email:
+                  <input type="text" className="w-full p-2 mt-1 rounded-lg border border-gray-300" />
+                </label>
                 <label className="block mb-2">
                   Crypto Address:
                   <input type="text" className="w-full p-2 mt-1 rounded-lg border border-gray-300" />
@@ -49,6 +64,8 @@ const WithdrawRequest = ({ onClose }) => {
                   <input type="text" className="w-full p-2 mt-1 rounded-lg border border-gray-300" />
                 </label>
               </form>
+              <li className='text-black'>Please click proceed to continue with withdraw and await admin approval</li>
+
             </div>
           )}
         </div>

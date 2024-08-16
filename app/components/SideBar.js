@@ -2,7 +2,7 @@
 import { IoCloseCircleOutline } from "react-icons/io5";
 import { GrHomeRounded } from "react-icons/gr";
 import { IoWalletOutline } from "react-icons/io5";
-import { FaHistory, FaLink } from 'react-icons/fa';
+import { FaLink } from 'react-icons/fa';
 import Image from 'next/image';
 import { useRouter } from "next/navigation";
 const Sidebar = ({ setContent, toggleMenu, activeMenu }) => {
@@ -47,10 +47,7 @@ const Sidebar = ({ setContent, toggleMenu, activeMenu }) => {
                     <IoWalletOutline className="mx-5 text-lg" />
                     Wallet
                 </button>
-                <button onClick={() => setContent('transactionHistory')} className="flex items-center px-4 py-3 hover:bg-[#242424] w-64 text-left rounded-lg">
-                    <FaHistory className="mx-5" />
-                    Transaction history
-                </button>
+                
                 <button onClick={() => setContent('referrals')} className="flex items-center px-4 py-3 hover:bg-[#242424] w-64 text-left rounded-lg">
                     <FaLink className="mx-5" />
                     Referrals

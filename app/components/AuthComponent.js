@@ -1,6 +1,7 @@
-"use client";
+"use client"
 import { useState } from 'react';
 import { useRouter } from "next/navigation";
+import { signIn } from "next-auth/react";
 
 const AuthComponent = () => {
   const [isLogin, setIsLogin] = useState(true);
@@ -49,7 +50,7 @@ const AuthComponent = () => {
       if (res.ok) {
         const form = e.target;
         form.reset();
-        setError("Account created now go to signin.");
+        setError("Account created. Please sign in.");
       } else {
         setError(data.message || "An error occurred.");
       }
@@ -67,28 +68,16 @@ const AuthComponent = () => {
       return;
     }
 
-    try {
-      const res = await fetch("api/login", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ email, password }),
-      });
+    const result = await signIn("credentials", {
+      redirect: false,
+      email,
+      password,
+    });
 
-      const data = await res.json();
-
-      if (res.ok) {
-        const form = e.target;
-        form.reset();
-        document.cookie = "user-authenticated=true; path=/";
-        router.push("/dashboard");
-      } else {
-        setError(data.message || "Invalid credentials.");
-      }
-    } catch (error) {
-      console.log("Error during login: ", error);
-      setError("An error occurred. Please try again later.");
+    if (result.error) {
+      setError(result.error);
+    } else {
+      router.push("/dashboard");
     }
   };
 
