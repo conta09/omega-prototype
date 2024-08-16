@@ -35,9 +35,6 @@ const Layout = ({ children, handleDepositClick, handleWithdrawClick, setContent,
             <main className="content flex-grow text-white">
                 <div className="">
                     <Row toggleMenu={toggleMenu} />
-                    <div className='text-[#5f5e5e] font-normal '>
-                        Email: <span>{user.email}</span>
-                    </div>
                     
                     <TopBar
                         handleDepositClick={handleDepositClick}
