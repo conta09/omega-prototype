@@ -3,83 +3,9 @@ import { useState } from 'react';
 import { useRouter } from "next/navigation";
 import { signIn } from "next-auth/react";
 
-const AuthComponent = () => {
+const LogReg = () => {
   const [isLogin, setIsLogin] = useState(true);
-  const [name, setName] = useState("");
-  const [phoneNumber, setPhoneNumber] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState('');
-  const [error, setError] = useState('');
-
-  const router = useRouter();
-
-  const handleRegister = async (e) => {
-    e.preventDefault();
-
-    if (!name || !phoneNumber || !email || !password) {
-      setError("All fields are necessary.");
-      return;
-    }
-
-    try {
-      const resUserExists = await fetch("api/userExists", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ email }),
-      });
-
-      const { user } = await resUserExists.json();
-
-      if (user) {
-        setError("User already exists.");
-        return;
-      }
-
-      const res = await fetch("api/register", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ name, phoneNumber, email, password }),
-      });
-
-      const data = await res.json();
-
-      if (res.ok) {
-        const form = e.target;
-        form.reset();
-        setError("Account created. Please sign in.");
-      } else {
-        setError(data.message || "An error occurred.");
-      }
-    } catch (error) {
-      console.log("Error during registration: ", error);
-      setError("An error occurred. Please try again later.");
-    }
-  };
-
-  const handleLogin = async (e) => {
-    e.preventDefault();
-
-    if (!email || !password) {
-      setError("All fields are necessary.");
-      return;
-    }
-
-    const result = await signIn("credentials", {
-      redirect: false,
-      email,
-      password,
-    });
-
-    if (result.error) {
-      setError(result.error);
-    } else {
-      router.push("/dashboard");
-    }
-  };
+ 
 
   return (
     <div className="flex justify-center items-center h-screen">
@@ -161,4 +87,4 @@ const AuthComponent = () => {
   );
 };
 
-export default AuthComponent;
+export default LogReg;

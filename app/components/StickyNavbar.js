@@ -8,6 +8,7 @@ import {
 } from "@material-tailwind/react";
 import Image from "next/image";
 import AuthComponent from "./AuthComponent"; // Adjust the import based on your file structure
+import LogReg from "./LogReg";
 
 export function StickyNavbar() {
   const [openNav, setOpenNav] = React.useState(false);

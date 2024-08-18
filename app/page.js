@@ -1,5 +1,4 @@
 "use client"
-import Navbar from "./components/Navbar";
 import HeroSection from "./components/HeroSection";
 import { StickyNavbar } from "./components/StickyNavbar";
 import Footer from "./components/Footer";

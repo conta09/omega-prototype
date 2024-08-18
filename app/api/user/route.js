@@ -2,7 +2,6 @@
 import { connectMongoDB } from "@/lib/mongodb";
 import User from "@/models/user";
 import { NextResponse } from "next/server";
-import { getSession } from "@/lib/session";
 
 export async function GET(req) {
   try {
