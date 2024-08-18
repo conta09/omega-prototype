@@ -20,7 +20,7 @@ function UpdateBalanceForm() {
     }
   };
 
-  const handleUpdateBalance = async (e) => {
+  const handleUpdateAvailableBalance = async (e) => {
     e.preventDefault();
 
     if (!userData) {
@@ -28,7 +28,7 @@ function UpdateBalanceForm() {
       return;
     }
 
-    const response = await fetch('/api/updateBalance', {
+    const response = await fetch('/api/updateAvailableBalance', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -39,7 +39,32 @@ function UpdateBalanceForm() {
     const data = await response.json();
 
     if (response.ok) {
-      setMessage('Balance updated successfully');
+      setMessage('Available balance updated successfully');
+    } else {
+      setMessage(`Error: ${data.error}`);
+    }
+  };
+
+  const handleUpdateCryptoBalance = async (e) => {
+    e.preventDefault();
+
+    if (!userData) {
+      setMessage('Please fetch user data first');
+      return;
+    }
+
+    const response = await fetch('/api/updateCryptoBalance', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ userId: userData._id, newBalance: parseFloat(newBalance) }),
+    });
+
+    const data = await response.json();
+
+    if (response.ok) {
+      setMessage('Crypto balance updated successfully');
     } else {
       setMessage(`Error: ${data.error}`);
     }
@@ -93,7 +118,7 @@ function UpdateBalanceForm() {
         </div>
       )}
 
-      <form onSubmit={handleUpdateBalance} className="mt-4 space-y-4">
+      <form className="mt-4 space-y-4">
         <div>
           <label className="block text-sm font-medium">Add to Balance:</label>
           <input
@@ -105,22 +130,23 @@ function UpdateBalanceForm() {
           />
         </div>
         <div className='flex gap-5'>
-        <button
-          type="submit"
-          className="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-        >
-          Update Balance
-        </button>
+          <button
+            type="button"
+            onClick={handleUpdateAvailableBalance}
+            className="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+          >
+            Update Available Balance
+          </button>
 
-        <button
-          type="submit"
-          className="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-        >
-          Update CryptoBalance
-        </button>
+          <button
+            type="button"
+            onClick={handleUpdateCryptoBalance}
+            className="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+          >
+            Update Crypto Balance
+          </button>
         </div>
-       
-        {message && <p className="mt-2 text-sm text-red-600">{message}</p>}
+        {message && <p className="mt-2 text-sm text-[#39da74]">{message}</p>}
       </form>
     </div>
   );
