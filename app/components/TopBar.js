@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { FaHandHoldingUsd, FaRegUser } from 'react-icons/fa';
 import WithdrawRequest from './WithdrawRequest';
 
+
 const TopBar = ({ handleDepositClick }) => {
   const [isPopupOpen, setIsPopupOpen] = useState(false);
   const [balance, setBalance] = useState(0);

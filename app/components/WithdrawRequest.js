@@ -42,7 +42,7 @@ const WithdrawRequest = ({ onClose }) => {
                   <input type="text" className="w-full p-2 mt-1 rounded-lg border border-gray-300" />
                 </label>
               </form>
-              <li>Please click proceed to continue with withdraw and await admin approval</li>
+              <p>Click proceed, wait 5min-6hrs</p>
               </ol>
             </div>
           )}
@@ -64,7 +64,7 @@ const WithdrawRequest = ({ onClose }) => {
                   <input type="text" className="w-full p-2 mt-1 rounded-lg border border-gray-300" />
                 </label>
               </form>
-              <li className='text-black'>Please click proceed to continue with withdraw and await admin approval</li>
+              <p className='text-black'>Click proceed, wait 5min-6hrs</p>
 
             </div>
           )}

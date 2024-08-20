@@ -2,23 +2,24 @@ import { useState } from 'react';
 import CreateCharge from './CreateCharge';
 import Trade from './Trade';
 import Image from 'next/image';
-import PaymentPopup from './PaymentPopup'; // Import the new component
+import PaymentPopup from './PaymentPopup';
+import DepositCrypto from './DepositCrypto';
 
 const Wallet = ({ balance, updateBalance }) => {
   const [action, setAction] = useState(null);
   const [amount, setAmount] = useState('');
   const [gateway, setGateway] = useState(null);
-  const [showPopup, setShowPopup] = useState(false); // State to manage popup visibility
+  const [showPopup, setShowPopup] = useState(false);
 
   const handleGatewayClick = (type) => {
     setGateway(type);
-    setAction(null); // Reset action when changing gateway
-    setShowPopup(false); // Close popup when changing gateway
+    setAction(null);
+    setShowPopup(false);
   };
 
   const handleActionClick = (type) => {
     setAction(type);
-    setShowPopup(true); // Show popup when deposit or withdraw is clicked
+    setShowPopup(true);
   };
 
   const handleClosePopup = () => {
@@ -31,16 +32,19 @@ const Wallet = ({ balance, updateBalance }) => {
         <h2 className="text-[0.9rem] font-normal text-[#b3b2b2]">SELECT GATEWAY</h2>
       </div>
       <div className='flex'>
-        <button onClick={() => handleGatewayClick('Momo')} className='flex items-center bg-[#141318]  font-semibold py-2 px-4 rounded'>
+        <button onClick={() => handleGatewayClick('Momo')} className='flex items-center bg-[#141318] font-semibold py-2 px-4 rounded'>
           <div className='bg-white'>
             <Image src="/momo.jpeg" alt="logo" width={50} height={50} className='p-4' />
           </div>
           <div className="text-left ml-4 p-2">
-        <h2 className="text-sm font-normal text-[#BFD48A]">Momo payment</h2>
-      </div>
+            <h2 className="text-sm font-normal text-[#BFD48A]">Momo payment</h2>
+          </div>
         </button>
         <button onClick={() => handleGatewayClick('Binance')} className='text-black font-semibold py-2 px-4 rounded'>
           <Trade />
+        </button>
+        <button onClick={() => handleGatewayClick('Deposit')} className='flex items-center bg-[#141318] font-semibold py-2 px-4 rounded'>
+          <h2 className="text-sm font-normal text-[#BFD48A]">Deposit address</h2>
         </button>
       </div>
 
@@ -66,6 +70,12 @@ const Wallet = ({ balance, updateBalance }) => {
       {gateway === 'Binance' && (
         <div className="mt-4">
           <CreateCharge />
+        </div>
+      )}
+
+      {gateway === 'Deposit' && (
+        <div className="mt-4">
+          <DepositCrypto onClose={handleClosePopup} /> {/* Pass handleClosePopup as a prop */}
         </div>
       )}
 
