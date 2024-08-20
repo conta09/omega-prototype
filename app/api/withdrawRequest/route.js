@@ -1,30 +1,19 @@
-// /app/api/withdrawRequest/route.js
-import Payment from '@/models/Payment';
-import { connectMongoDB } from "@/lib/mongodb";
+import { NextResponse } from 'next/server';
+import Withdraws from '@/models/withdraws'; // Ensure the correct path
+import { connectMongoDB } from '@/lib/mongodb';
 
-export async function POST(req, res) {
-  await connectMongoDB(); // Connect to the database
-
+export async function GET() {
   try {
-    const { email, amountFRW, amountUSDT, cryptoAddress } = await req.json();
+    await connectMongoDB(); // Ensure database connection
 
-    // Determine the currency based on the method used
-    const currency = amountFRW ? 'FRW' : 'USDT';
-    const amount = currency === 'FRW' ? amountFRW : amountUSDT;
+    // Fetch all withdrawal requests
+    const withdrawRequests = await Withdraws.find().sort({ createdAt: -1 }); // Sorted by most recent
 
-    const newPayment = new Payment({
-      email,
-      amountFRW: currency === 'FRW' ? amountFRW : undefined,
-      amountUSDT: currency === 'USDT' ? amountUSDT : undefined,
-      cryptoAddress,
-      currency,
-    });
+    // Return the withdrawal requests as JSON
+    return NextResponse.json(withdrawRequests, { status: 200 });
 
-    await newPayment.save();
-
-    return res.status(200).json({ message: 'Withdraw request saved successfully.' });
   } catch (error) {
-    console.error('Error saving withdraw request:', error);
-    return res.status(500).json({ message: 'Failed to save withdraw request.', error });
+    console.error('Error fetching withdrawal requests:', error);
+    return NextResponse.json({ message: 'Failed to fetch withdrawal requests' }, { status: 500 });
   }
 }
