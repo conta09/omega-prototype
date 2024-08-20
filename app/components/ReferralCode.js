@@ -1,5 +1,4 @@
 import React from 'react';
-
 const ReferralCode = () => {
     const address = 'TGGLwewdnefsndowedqHucYKWUGeqaPozu6oo';
 

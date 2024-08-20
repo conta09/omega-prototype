@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
+import Profile from './Profile';
 import { FaHandHoldingUsd, FaRegUser } from 'react-icons/fa';
 import WithdrawRequest from './WithdrawRequest';
 
 
 const TopBar = ({ handleDepositClick }) => {
   const [isPopupOpen, setIsPopupOpen] = useState(false);
-  const [balance, setBalance] = useState(0);
   const [cryptoBalance, setCryptoBalance] = useState(0);
 
   useEffect(() => {
@@ -40,6 +40,8 @@ const TopBar = ({ handleDepositClick }) => {
       <div className="flex items-center">
         <h1 className="text-[1.2rem] text-[#BFD48A] font-normal py-5">Dashboard</h1>
       </div>
+      <Profile />
+      {/*
       <div className="mt-2">
         <p className="font-thin text-[0.8rem]">Total Balance in FRW</p>
         <p className="text-xl py-1 font-semibold">{balance} <span className='text-[#6e6d6d]'>RWF</span></p>
@@ -50,6 +52,8 @@ const TopBar = ({ handleDepositClick }) => {
           <p className="text-2xl py1 font-semibold">{cryptoBalance} <span className='text-[#6e6d6d]'>USDT</span></p>
         </div>
       </div>
+             */}
+
       <div className="flex space-x-4 my-5">
         <button
           onClick={handleDepositClick}
