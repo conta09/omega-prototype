@@ -33,7 +33,7 @@ const Wallet = ({ balance, updateBalance }) => {
       </div>
       <div className='flex gap-5'>
         <button onClick={() => handleGatewayClick('Momo')} className='flex items-center bg-[#141318] font-semibold py-2 px-4 rounded'>
-          <div className='bg-white'>
+          <div className=''>
             <Image src="/momo.jpeg" alt="logo" width={50} height={50} className='p-4' />
           </div>
           <div className="text-left ml-4 p-2">
@@ -42,6 +42,9 @@ const Wallet = ({ balance, updateBalance }) => {
         </button>
        
         <button onClick={() => handleGatewayClick('Deposit')} className='flex items-center bg-[#141318] font-semibold py-2 px-4 rounded'>
+        <div className=''>
+            <Image src="/binance-logo.png" alt="logo" width={50} height={50} className='p-4' />
+          </div>
           <h2 className="text-sm font-normal text-[#BFD48A]">Crypto payment</h2>
         </button>
       </div>
