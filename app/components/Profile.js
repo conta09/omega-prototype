@@ -36,8 +36,7 @@ const Profile = () => {
   }
 
   return (
-    <div className=" text-white p-6 rounded-[35px] max-w-[28rem] lg:max-w-[50rem] mx-auto">
-     
+    <div className="text-white p-6 rounded-[35px] max-w-[28rem] lg:max-w-[50rem] mx-auto">
       <div className="mt-2">
         <table className="w-full text-left text-sm mt-4">
           <tbody>
@@ -45,8 +44,6 @@ const Profile = () => {
               <td className="font-thin text-[0.8rem] py-2">Name</td>
               <td className="text-[#BFD48A] font-semibold">{userData.name}</td>
             </tr>
-    
-           
             <tr>
               <td className="font-thin text-[0.8rem] py-2">Total Balance in FRW</td>
               <td className="text-[#BFD48A] font-semibold">{userData.availableBalance} RWF</td>
@@ -54,6 +51,14 @@ const Profile = () => {
             <tr>
               <td className="font-thin text-[0.8rem] py-2">Crypto Balance</td>
               <td className="text-[#BFD48A] font-semibold">{userData.cryptoBalance} USDT</td>
+            </tr>
+            <tr>
+              <td className="font-thin text-[0.8rem] py-2">Crypto Profit</td>
+              <td className="text-[#BFD48A] font-semibold">{userData.cryptoProfit} USDT</td>
+            </tr>
+            <tr>
+              <td className="font-thin text-[0.8rem] py-2">Amount Profit</td>
+              <td className="text-[#BFD48A] font-semibold">{userData.amountProfit} RWF</td>
             </tr>
           </tbody>
         </table>

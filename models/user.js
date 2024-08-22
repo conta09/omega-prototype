@@ -26,6 +26,14 @@ const userSchema = new Schema(
       type: Number,
       default: 0,
     },
+    cryptoProfit: {
+      type: Schema.Types.Decimal128,
+      default: 0,
+    },
+    amountProfit: {
+      type: Schema.Types.Decimal128,
+      default: 0,
+    },
     referralCode: {
       type: String,
       unique: true,

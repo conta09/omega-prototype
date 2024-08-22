@@ -1,5 +1,7 @@
 "use client";
-import { FaFacebookF, FaInstagram, FaEnvelope } from 'react-icons/fa'
+import { FaFacebookF, FaTelegramPlane } from 'react-icons/fa'
+import { MdEmail } from "react-icons/md";
+
 import { IoCloseCircleOutline } from "react-icons/io5";
 import { GrHomeRounded } from "react-icons/gr";
 import { IoWalletOutline } from "react-icons/io5";
@@ -63,14 +65,14 @@ const Sidebar = ({ setContent, toggleMenu, activeMenu }) => {
         <div className="flex flex-col text-left px-5 pt-5 mt-5  text-[0.8rem] text-[#727171]">
           <p className='font-normal'>Need Help? Contact us</p>
           <div className="flex space-x-3 mt-5">
-            <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer">
+            <a href="https://web.facebook.com/profile.php?id=61560869062150" target="_blank" rel="noopener noreferrer">
               <FaFacebookF className="text-[#727171] text-lg" />
             </a>
-            <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer">
-              <FaInstagram className="text-[#727171] text-lg" />
+            <a href="http://t.me/omegatradingb" target="_blank" rel="noopener noreferrer">
+              <FaTelegramPlane  className="text-[#727171] text-lg" />
             </a>
-            <a href="mailto:support@example.com">
-              <FaEnvelope className="text-[#727171] text-lg" />
+            <a href="mailto:omegat431@gmail.com">
+              <MdEmail className="text-[#727171] text-lg" />
             </a>
           </div>
         </div>

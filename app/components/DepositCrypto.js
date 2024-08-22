@@ -1,6 +1,15 @@
+import Image from "next/image";
 const DepositCrypto = () => {
   return (
-    <div className="bg-white p-6 rounded-xl shadow-xl text-black max-w-lg ">
+    <div className="bg-white p-6 rounded-xl shadow-xl text-black max-w-md ">
+      <div className=" my-8 ">
+      <Image
+          src="/omega-dark.png"
+          alt="logo"
+          width={120}
+          height={120}
+        />
+      </div>
       <h3 className="text-2xl font-bold text-gray-800 mb-4">Deposit Address</h3>
       <div className="bg-gray-100 p-4 rounded-lg mb-6">
         <p className="text-sm text-gray-600 mb-2">Send your funds to the following address:</p>

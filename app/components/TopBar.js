@@ -38,7 +38,7 @@ const TopBar = ({ handleDepositClick }) => {
   return (
     <div className="bg-[#141318] text-white p-6 rounded-[35px] max-w-[28rem] lg:max-w-[50rem] mx-auto">
       <div className="flex items-center">
-        <h1 className="text-[1.2rem] text-[#BFD48A] font-normal py-5">Dashboard</h1>
+        <h1 className="text-[1.5rem] text-[#BFD48A] font-normal py-5">Dashboard</h1>
       </div>
       <Profile />
       {/*

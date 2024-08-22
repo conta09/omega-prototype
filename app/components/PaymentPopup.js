@@ -12,7 +12,7 @@ const PaymentPopup = ({ onClose }) => {
           <div className="bg-gray-100 p-4 rounded-lg">
             <h3 className="text-base font-semibold mb-2 text-black">Steps to make payment by MoMo</h3>
             <ol className="list-decimal list-inside text-left text-gray-700">
-              <li>Copy the number below: <strong>0 788 819 111</strong></li>
+              <li>Copy the code below: <strong>*182*8*1*875564#</strong></li>
               <li>Send the amount of money to this number.</li>
               <li>Take a screenshot of the transaction and send it to WhatsApp: <strong>0 788 819 111</strong></li>
               <li>Await for admin approval, this may take a few moments.</li>
