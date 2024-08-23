@@ -13,10 +13,10 @@ export async function GET(req) {
   try {
     await connectMongoDB();
 
-    // Fetch user details based on email, including cryptoProfit and amountProfit
+    // Fetch user details based on email, including cryptoProfit, amountProfit, and referralProfit
     const user = await User.findOne(
       { email },
-      'name phoneNumber email cryptoBalance availableBalance cryptoProfit amountProfit'
+      'name phoneNumber email cryptoBalance availableBalance cryptoProfit amountProfit referralProfit'
     );
 
     if (!user) {
@@ -31,6 +31,7 @@ export async function GET(req) {
       availableBalance: user.availableBalance,
       cryptoProfit: user.cryptoProfit.toString(),  // Convert Decimal128 to string
       amountProfit: user.amountProfit.toString(),  // Convert Decimal128 to string
+      referralProfit: user.referralProfit.toString(), // Convert Decimal128 to string
     });
   } catch (error) {
     return NextResponse.json({ error: 'Failed to fetch user' }, { status: 500 });

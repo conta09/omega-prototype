@@ -34,6 +34,10 @@ const userSchema = new Schema(
       type: Schema.Types.Decimal128,
       default: 0,
     },
+    referralProfit: {
+      type: Schema.Types.Decimal128,
+      default: 0,
+    },
     referralCode: {
       type: String,
       unique: true,

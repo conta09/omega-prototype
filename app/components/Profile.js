@@ -60,6 +60,10 @@ const Profile = () => {
               <td className="font-thin text-[0.8rem] py-2">Amount Profit</td>
               <td className="text-[#BFD48A] font-semibold">{userData.amountProfit} RWF</td>
             </tr>
+            <tr>
+              <td className="font-thin text-[0.8rem] py-2">Referral Profit</td>
+              <td className="text-[#BFD48A] font-semibold">{userData.referralProfit} RWF</td>
+            </tr>
           </tbody>
         </table>
       </div>

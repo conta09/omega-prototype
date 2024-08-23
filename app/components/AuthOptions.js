@@ -13,12 +13,12 @@ const AuthOptions = () => {
           Join a global community and start earning today!
         </h2>
         <Link href="#">
-          <button className='text-white font-semibold text-sm lg:text-base w-full md:w-auto py-3 px-8 rounded-full bg-gradient-to-r from-green-400 to-blue-500 hover:opacity-90 transition-opacity duration-300'>
+          <button className='text-white font-semibold text-sm lg:text-base w-full md:w-auto py-3 px-16 rounded-full bg-gradient-to-r from-green-400 to-blue-500 hover:opacity-90 transition-opacity duration-300'>
             Sign Up
           </button>
         </Link>
         <Link href="#">
-          <button className='text-white font-semibold text-sm lg:text-base w-full md:w-auto py-3 px-8 rounded-full border border-gray-600 hover:bg-gray-700 mt-3 transition-all duration-300'>
+          <button className='text-white font-semibold text-sm lg:text-base w-full md:w-auto py-3 px-12 rounded-full border border-gray-600 hover:bg-gray-700 mt-3 transition-all duration-300'>
             Contact Us
           </button>
         </Link>
@@ -29,7 +29,7 @@ const AuthOptions = () => {
         <label className="text-[#cccccc] text-sm">Enter your name</label>
         <input
           type="text"
-          placeholder="MUGABO"
+          placeholder="John Doe"
           readOnly
           className="bg-[#1F1F1F] text-white py-3 px-4 rounded-lg w-full focus:outline-none border-none shadow-inner"
         />
