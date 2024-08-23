@@ -36,7 +36,7 @@ const ReferralCode = () => {
         onClick={generateReferral}
         disabled={generated || !session?.user?.email}
       >
-        {generated ? 'Generated' : 'Generate'}
+        {generated ? 'Displayed' : 'Display'}
       </button>
 
       {referralCode && (

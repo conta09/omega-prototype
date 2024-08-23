@@ -22,7 +22,7 @@ const AdminBar = ({ onMenuClick }) => {
     return (
         <div className="flex h-screen">
             {/* Sidebar */}
-            <div className={`bg-gray-900 text-white flex flex-col items-center p-4 fixed h-full transition-transform transform ${isOpen ? 'translate-x-0' : '-translate-x-full'} md:translate-x-0 md:w-64 z-50`}>
+            <div className={`bg-gray-900 text-white flex flex-col items-center p-4 fixed h-full transition-transform transform ${isOpen ? 'translate-x-0' : '-translate-x-full'} md:translate-x-0 md:w-72 z-50 overflow-y-auto`}>
                 <button onClick={toggleSidebar} className="text-white self-end md:hidden">
                     <FaTimes />
                 </button>
@@ -53,18 +53,18 @@ const AdminBar = ({ onMenuClick }) => {
                         <span className='mx-5'>Manage Users</span>
                     </button>
                     <button
-                        className={`w-full flex items-center space-x-2 p-2 rounded-md hover:bg-gray-800 ${activeMenu === 'Refferals' ? 'bg-gray-800' : ''}`}
+                        className={`w-full flex items-center space-x-2 p-2 rounded-md hover:bg-gray-800 ${activeMenu === 'Withdraws' ? 'bg-gray-800' : ''}`}
                         onClick={() => handleMenuClick('Withdraws')}
                     >
                         <FaUsers className="mx-5 h-6 text-gray-400" />
                         <span className='mx-5'>Withdraw requests</span>
                     </button>
                     <button
-                        className={`w-full flex items-center space-x-2 p-2 rounded-md hover:bg-gray-800 ${activeMenu === 'Refferals' ? 'bg-gray-800' : ''}`}
+                        className={`w-full flex items-center space-x-2 p-2 rounded-md hover:bg-gray-800 ${activeMenu === 'Referrals' ? 'bg-gray-800' : ''}`}
                         onClick={() => handleMenuClick('Referrals')}
                     >
                         <FaUsers className="mx-5 h-6 text-gray-400" />
-                        <span className='mx-5'>User Refferals</span>
+                        <span className='mx-5'>User Referrals</span>
                     </button>
                     <button
                         className={`w-full flex items-center space-x-2 p-2 rounded-md hover:bg-gray-800 ${activeMenu === 'Approvals' ? 'bg-gray-800' : ''}`}
@@ -73,7 +73,13 @@ const AdminBar = ({ onMenuClick }) => {
                         <FaAddressBook className="mx-5 h-6 text-gray-400" />
                         <span className='mx-5'>Update Users</span>
                     </button>
-                    
+                    <button
+                        className={`w-full flex items-center space-x-2 p-2 rounded-md hover:bg-gray-800 ${activeMenu === 'Profits' ? 'bg-gray-800' : ''}`}
+                        onClick={() => handleMenuClick('Profits')}
+                    >
+                        <FaAddressBook className="mx-5 h-6 text-gray-400" />
+                        <span className='mx-5'>Update Profits</span>
+                    </button>
                     <button
                         className={`w-full flex items-center space-x-2 p-2 rounded-md hover:bg-gray-800 ${activeMenu === 'All transactions' ? 'bg-gray-800' : ''}`}
                         onClick={() => handleMenuClick('All transactions')}
@@ -82,12 +88,12 @@ const AdminBar = ({ onMenuClick }) => {
                         <span className='mx-5'>All transactions</span>
                     </button>
                     <button className='w-full flex items-center space-x-2 p-2 rounded-md hover:bg-gray-800'>
-                    <span className='mx-5'>Log Out</span>
+                        <span className='mx-5'>Log Out</span>
                     </button>
                 </div>
             </div>
             {/* Main Content */}
-            <div className="flex-1 p-4 ">
+            <div className="flex-1 p-4">
                 <button onClick={toggleSidebar} className="text-white md:hidden">
                     <RiMenu4Fill className='text-2xl' />
                 </button>

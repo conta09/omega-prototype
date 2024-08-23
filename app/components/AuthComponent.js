@@ -10,6 +10,8 @@ const AuthComponent = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
+  const [message, setMessage] = useState('');
+
 
   const router = useRouter();
 
@@ -50,7 +52,7 @@ const AuthComponent = () => {
       if (res.ok) {
         const form = e.target;
         form.reset();
-        setError("Account created. Please sign in.");
+        setMessage("Account created. Please sign in.");
       } else {
         setError(data.message || "An error occurred.");
       }
@@ -148,6 +150,11 @@ const AuthComponent = () => {
           {error && (
             <div className='bg-[#be3232] p-2 text-[0.9rem] my-2 rounded-md w-fit'>
               {error}
+            </div>
+          )}
+            {message && (
+            <div className='bg-[#32be78] p-2 text-[0.9rem] my-2 rounded-md w-fit'>
+              {message}
             </div>
           )}
         </form>

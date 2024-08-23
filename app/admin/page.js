@@ -7,6 +7,7 @@ import UpdateBalanceForm from '../components/UpdateBalanceForm';
 import Transactions from '../components/FetchTransactions';
 import UserRefferals from '../components/UserRefferals';
 import Withdraws from '../components/Withdaws';
+import UpdateProfitsButton from '../components/UpdateProfitsButton';
 function App() {
   const [activeContent, setActiveContent] = useState('Dashboard');
 
@@ -31,6 +32,10 @@ function App() {
         return <Withdraws />;
         case 'Referrals':
           return <UserRefferals />;
+
+          case 'Profits':
+            return <UpdateProfitsButton />;
+
       case 'All transactions':
         return <Transactions />;
       default:
