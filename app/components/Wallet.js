@@ -58,12 +58,7 @@ const Wallet = ({ balance, updateBalance }) => {
             >
               Deposit
             </button>
-            <button
-              onClick={() => handleActionClick('Withdraw')}
-              className="hover:bg-white hover:text-black text-white w-1/3 font-bold py-2 px-4 border-[1px] border-white rounded"
-            >
-              Withdraw
-            </button>
+          
           </div>
         </div>
       )}
