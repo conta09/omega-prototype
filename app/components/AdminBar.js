@@ -1,9 +1,10 @@
-"use client"
+"use client";
 import React, { useState } from 'react';
 import { FaLink, FaUsers, FaAddressBook, FaTimes } from 'react-icons/fa';
 import { GrHomeRounded } from "react-icons/gr";
 import Image from 'next/image';
 import { RiMenu4Fill } from 'react-icons/ri';
+import { signOut } from "next-auth/react"; // Import signOut from next-auth
 
 const AdminBar = ({ onMenuClick }) => {
     const [isOpen, setIsOpen] = useState(false);
@@ -17,6 +18,10 @@ const AdminBar = ({ onMenuClick }) => {
         setActiveMenu(menu);
         onMenuClick(menu);  // Call the function passed as a prop
         setIsOpen(false);   // Close sidebar on menu click for mobile
+    };
+
+    const handleLogout = () => {
+        signOut({ callbackUrl: '/' }); // Log out and redirect to the homepage
     };
 
     return (
@@ -87,7 +92,10 @@ const AdminBar = ({ onMenuClick }) => {
                         <FaLink className="mx-5 text-gray-400" />
                         <span className='mx-5'>All transactions</span>
                     </button>
-                    <button className='w-full flex items-center space-x-2 p-2 rounded-md hover:bg-gray-800'>
+                    <button 
+                        className='w-full flex items-center space-x-2 p-2 rounded-md hover:bg-gray-800'
+                        onClick={handleLogout}
+                    >
                         <span className='mx-5'>Log Out</span>
                     </button>
                 </div>

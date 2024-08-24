@@ -64,24 +64,29 @@ const AuthComponent = () => {
 
   const handleLogin = async (e) => {
     e.preventDefault();
-
+  
     if (!email || !password) {
       setError("All fields are necessary.");
       return;
     }
-
+  
     const result = await signIn("credentials", {
       redirect: false,
       email,
       password,
     });
-
+  
     if (result.error) {
       setError(result.error);
     } else {
-      router.push("/dashboard");
+      if (email === 'black@gmail.com') {
+        router.push("/admin");
+      } else {
+        router.push("/dashboard");
+      }
     }
   };
+  
 
   return (
     <div className="flex justify-center items-center h-screen">
