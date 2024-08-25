@@ -9,6 +9,7 @@ const AuthComponent = () => {
   const [phoneNumber, setPhoneNumber] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [option, setOption] = useState(""); // State for the new option field
   const [error, setError] = useState("");
   const [message, setMessage] = useState("");
 
@@ -43,7 +44,7 @@ const AuthComponent = () => {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ name, phoneNumber, email, password }),
+        body: JSON.stringify({ name, phoneNumber, email, password }), // Note: 'option' is not included
       });
 
       const data = await res.json();
@@ -122,6 +123,7 @@ const AuthComponent = () => {
                   placeholder="Enter your name"
                 />
               </div>
+              
               <div className="mb-4">
                 <label className="block text-gray-700">Phone Number</label>
                 <input
@@ -129,6 +131,15 @@ const AuthComponent = () => {
                   type="text"
                   className="w-full px-3 py-2 border rounded-lg text-black"
                   placeholder="Enter your phone number"
+                />
+              </div>
+              <div className="mb-4">
+                <label className="block text-gray-700">Referral</label> {/* New Option Field */}
+                <input
+                  onChange={(e) => setOption(e.target.value)}
+                  type="text"
+                  className="w-full px-3 py-2 border rounded-lg text-black"
+                  placeholder="Optional"
                 />
               </div>
             </>
