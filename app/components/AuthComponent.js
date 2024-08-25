@@ -9,7 +9,6 @@ const AuthComponent = () => {
   const [phoneNumber, setPhoneNumber] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [referralCode, setReferralCode] = useState(""); // State for referral code
   const [error, setError] = useState("");
   const [message, setMessage] = useState("");
 
@@ -24,7 +23,7 @@ const AuthComponent = () => {
     }
 
     try {
-      const resUserExists = await fetch("api/userExists", {
+      const resUserExists = await fetch("/api/userExists", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -39,12 +38,12 @@ const AuthComponent = () => {
         return;
       }
 
-      const res = await fetch("api/register", {
+      const res = await fetch("/api/register", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ name, phoneNumber, email, password, referralCode }), // Include referralCode
+        body: JSON.stringify({ name, phoneNumber, email, password }),
       });
 
       const data = await res.json();
@@ -130,15 +129,6 @@ const AuthComponent = () => {
                   type="text"
                   className="w-full px-3 py-2 border rounded-lg text-black"
                   placeholder="Enter your phone number"
-                />
-              </div>
-              <div className="mb-4">
-                <label className="block text-gray-700">Referral Code (Optional)</label>
-                <input
-                  onChange={(e) => setReferralCode(e.target.value)}
-                  type="text"
-                  className="w-full px-3 py-2 border rounded-lg text-black"
-                  placeholder="Enter referral code (if any)"
                 />
               </div>
             </>

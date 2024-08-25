@@ -5,7 +5,7 @@ import EmailsList from '../components/EmailsList';
 import StatsCards from '../components/StatsCards';
 import UpdateBalanceForm from '../components/UpdateBalanceForm';
 import Transactions from '../components/FetchTransactions';
-import UserRefferals from '../components/UserRefferals';
+import Referral from '../components/Referral';
 import Withdraws from '../components/Withdaws';
 import UpdateProfitsButton from '../components/UpdateProfitsButton';
 function App() {
@@ -31,7 +31,7 @@ function App() {
         case 'Withdraws':
         return <Withdraws />;
         case 'Referrals':
-          return <UserRefferals />;
+          return <Referral />;
 
           case 'Profits':
             return <UpdateProfitsButton />;
