@@ -5,7 +5,7 @@ import bcrypt from "bcryptjs";
 
 export async function POST(req) {
   try {
-    const { name, phoneNumber, email, password } = await req.json();
+    const { name, phoneNumber, email, password, referralCode } = await req.json();
     await connectMongoDB();
 
     const existingUser = await User.findOne({ email });
@@ -15,7 +15,15 @@ export async function POST(req) {
     }
 
     const hashedPassword = await bcrypt.hash(password, 10);
-    await User.create({ name, phoneNumber, email, password: hashedPassword });
+
+    // Create the user with or without the referral code
+    await User.create({
+      name,
+      phoneNumber,
+      email,
+      password: hashedPassword,
+      referralCode: referralCode || null, // If referralCode is not provided, set it to null
+    });
 
     return NextResponse.json({ message: "User registered." }, { status: 201 });
   } catch (error) {

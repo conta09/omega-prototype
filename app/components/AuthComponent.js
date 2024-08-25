@@ -1,5 +1,5 @@
-"use client"
-import { useState } from 'react';
+"use client";
+import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { signIn } from "next-auth/react";
 
@@ -8,10 +8,10 @@ const AuthComponent = () => {
   const [name, setName] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
   const [email, setEmail] = useState("");
-  const [password, setPassword] = useState('');
-  const [error, setError] = useState('');
-  const [message, setMessage] = useState('');
-
+  const [password, setPassword] = useState("");
+  const [referralCode, setReferralCode] = useState(""); // State for referral code
+  const [error, setError] = useState("");
+  const [message, setMessage] = useState("");
 
   const router = useRouter();
 
@@ -44,7 +44,7 @@ const AuthComponent = () => {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ name, phoneNumber, email, password }),
+        body: JSON.stringify({ name, phoneNumber, email, password, referralCode }), // Include referralCode
       });
 
       const data = await res.json();
@@ -64,49 +64,52 @@ const AuthComponent = () => {
 
   const handleLogin = async (e) => {
     e.preventDefault();
-  
+
     if (!email || !password) {
       setError("All fields are necessary.");
       return;
     }
-  
+
     const result = await signIn("credentials", {
       redirect: false,
       email,
       password,
     });
-  
+
     if (result.error) {
       setError(result.error);
     } else {
-      if (email === 'black@gmail.com') {
+      if (email === "black@gmail.com") {
         router.push("/admin");
       } else {
         router.push("/dashboard");
       }
     }
   };
-  
 
   return (
     <div className="flex justify-center items-center h-screen">
       <div className="bg-white p-8 rounded-lg shadow-md w-96">
         <div className="flex justify-between mb-4 text-black">
           <button
-            className={`px-4 py-2 ${isLogin ? 'text-blue-600 border-b-2 border-blue-600' : ''}`}
+            className={`px-4 py-2 ${
+              isLogin ? "text-blue-600 border-b-2 border-blue-600" : ""
+            }`}
             onClick={() => setIsLogin(true)}
           >
             Sign In
           </button>
           <button
-            className={`px-4 py-2 ${!isLogin ? 'text-blue-600 border-b-2 border-blue-600' : ''}`}
+            className={`px-4 py-2 ${
+              !isLogin ? "text-blue-600 border-b-2 border-blue-600" : ""
+            }`}
             onClick={() => setIsLogin(false)}
           >
             Sign Up
           </button>
         </div>
         <h2 className="text-xs font-light mb-4 text-[#8a8a8a]">
-          {isLogin ? 'SIGN IN, WE ARE WAITING FOR YOU' : 'Register'}
+          {isLogin ? "SIGN IN, WE ARE WAITING FOR YOU" : "Register"}
         </h2>
         <form onSubmit={isLogin ? handleLogin : handleRegister}>
           {!isLogin && (
@@ -127,6 +130,15 @@ const AuthComponent = () => {
                   type="text"
                   className="w-full px-3 py-2 border rounded-lg text-black"
                   placeholder="Enter your phone number"
+                />
+              </div>
+              <div className="mb-4">
+                <label className="block text-gray-700">Referral Code (Optional)</label>
+                <input
+                  onChange={(e) => setReferralCode(e.target.value)}
+                  type="text"
+                  className="w-full px-3 py-2 border rounded-lg text-black"
+                  placeholder="Enter referral code (if any)"
                 />
               </div>
             </>
@@ -150,15 +162,15 @@ const AuthComponent = () => {
             />
           </div>
           <button className="w-full bg-blue-600 text-white py-2 rounded-lg">
-            {isLogin ? 'Log In' : 'Register'}
+            {isLogin ? "Log In" : "Register"}
           </button>
           {error && (
-            <div className='bg-[#be3232] p-2 text-[0.9rem] my-2 rounded-md w-fit'>
+            <div className="bg-[#be3232] p-2 text-[0.9rem] my-2 rounded-md w-fit">
               {error}
             </div>
           )}
-            {message && (
-            <div className='bg-[#32be78] p-2 text-[0.9rem] my-2 rounded-md w-fit'>
+          {message && (
+            <div className="bg-[#32be78] p-2 text-[0.9rem] my-2 rounded-md w-fit">
               {message}
             </div>
           )}
