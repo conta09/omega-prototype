@@ -3,7 +3,7 @@ import User from "@/models/user";
 
 export async function POST(req) {
   try {
-    const { userId, newBalance } = await req.json();
+    const { userId, newProfit } = await req.json();
 
     await connectMongoDB();
 
@@ -14,8 +14,8 @@ export async function POST(req) {
       });
     }
 
-    // Add the new balance to the existing referral profit
-    user.referralProfit = parseFloat(user.referralProfit) + parseFloat(newBalance);
+    // Add the new profit to the existing referral profit
+    user.referralProfit += newProfit;
     await user.save();
 
     return new Response(JSON.stringify({ message: "Referral profit updated successfully" }), {

@@ -16,7 +16,7 @@ export async function GET(req) {
     // Fetch user details based on email
     const user = await User.findOne(
       { email },
-      'name phoneNumber email cryptoBalance availableBalance cryptoProfit amountProfit'
+      'name phoneNumber email cryptoBalance availableBalance cryptoProfit amountProfit referralProfit'
     );
 
     if (!user) {

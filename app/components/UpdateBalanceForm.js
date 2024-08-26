@@ -139,6 +139,18 @@ function UpdateBalanceForm() {
             </p>
           </div>
           <div>
+            <label className="block text-sm font-medium">Crypto Profit:</label>
+            <p className="mt-1 block w-2/3 border border-gray-300 rounded-md shadow-sm py-2 px-3 sm:text-sm">
+              {userData.cryptoProfit}
+            </p>
+          </div>
+          <div>
+            <label className="block text-sm font-medium">Amount Profit:</label>
+            <p className="mt-1 block w-2/3 border border-gray-300 rounded-md shadow-sm py-2 px-3 sm:text-sm">
+              {userData.amountProfit}
+            </p>
+          </div>
+          <div>
             <label className="block text-sm font-medium">Referral Profit:</label>
             <p className="mt-1 block w-2/3 border border-gray-300 rounded-md shadow-sm py-2 px-3 sm:text-sm">
               {userData.referralProfit}
@@ -183,8 +195,13 @@ function UpdateBalanceForm() {
             Update Referral Profit
           </button>
         </div>
-        {message && <p className="mt-2 text-sm text-[#39da74]">{message}</p>}
       </form>
+
+      {message && (
+        <div className="mt-4">
+          <p className="text-[#67f367]">{message}</p>
+        </div>
+      )}
     </div>
   );
 }
