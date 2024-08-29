@@ -27,11 +27,11 @@ const userSchema = new Schema(
       default: 0,
     },
     cryptoProfit: {
-      type: Schema.Types.Decimal128,
+      type: Number,
       default: 0,
     },
     amountProfit: {
-      type: Schema.Types.Decimal128,
+      type: Number,
       default: 0,
     },
     referralProfit: {

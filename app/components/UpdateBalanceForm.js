@@ -83,6 +83,48 @@ function UpdateBalanceForm() {
     }
   };
 
+  const handleUpdateCryptoProfit = async (e) => {
+    e.preventDefault();
+    if (!userData) {
+      setMessage('Please fetch user data first');
+      return;
+    }
+    const response = await fetch('/api/updateCryptoProfit', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ userId: userData._id, newProfit: parseFloat(newBalance) }),
+    });
+    const data = await response.json();
+    if (response.ok) {
+      setMessage('Crypto profit updated successfully');
+    } else {
+      setMessage(`Error: ${data.error}`);
+    }
+  };
+
+  const handleUpdateAmountProfit = async (e) => {
+    e.preventDefault();
+    if (!userData) {
+      setMessage('Please fetch user data first');
+      return;
+    }
+    const response = await fetch('/api/updateAmountProfit', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ userId: userData._id, newProfit: parseFloat(newBalance) }),
+    });
+    const data = await response.json();
+    if (response.ok) {
+      setMessage('Amount profit updated successfully');
+    } else {
+      setMessage(`Error: ${data.error}`);
+    }
+  };
+
   return (
     <div>
       <div className="space-y-4">
@@ -170,37 +212,52 @@ function UpdateBalanceForm() {
             className="mt-1 block w-2/3 border text-black border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
           />
         </div>
-        <div className="flex gap-5">
-          <button
-            type="button"
-            onClick={handleUpdateAvailableBalance}
-            className="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-          >
-            Update Available Balance
-          </button>
+        <div className="flex flex-wrap gap-5 sm:gap-3 justify-center">
+  <button
+    type="button"
+    onClick={handleUpdateAvailableBalance}
+    className="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 w-full sm:w-auto"
+  >
+    Update Available Balance
+  </button>
 
-          <button
-            type="button"
-            onClick={handleUpdateCryptoBalance}
-            className="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-          >
-            Update Crypto Balance
-          </button>
+  <button
+    type="button"
+    onClick={handleUpdateCryptoBalance}
+    className="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 w-full sm:w-auto"
+  >
+    Update Crypto Balance
+  </button>
 
-          <button
-            type="button"
-            onClick={handleUpdateReferralProfit}
-            className="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-          >
-            Update Referral Profit
-          </button>
-        </div>
+  <button
+    type="button"
+    onClick={handleUpdateReferralProfit}
+    className="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 w-full sm:w-auto"
+  >
+    Update Referral Profit
+  </button>
+
+  <button
+    type="button"
+    onClick={handleUpdateCryptoProfit}
+    className="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 w-full sm:w-auto"
+  >
+    Update Crypto Profit
+  </button>
+
+  <button
+    type="button"
+    onClick={handleUpdateAmountProfit}
+    className="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 w-full sm:w-auto"
+  >
+    Update Amount Profit
+  </button>
+</div>
+
       </form>
 
       {message && (
-        <div className="mt-4">
-          <p className="text-[#67f367]">{message}</p>
-        </div>
+        <p className="mt-4 text-sm text-[#78e16f]">{message}</p>
       )}
     </div>
   );

@@ -1,5 +1,5 @@
 import React from 'react';
-import { FaTelegramPlane, FaEnvelope } from 'react-icons/fa';
+import { FaTelegramPlane, FaEnvelope, FaWhatsapp } from 'react-icons/fa';
 
 const PaymentPopup = ({ onClose }) => {
   return (
@@ -18,6 +18,9 @@ const PaymentPopup = ({ onClose }) => {
               <li>
                 Take a screenshot of the transaction and send it via:
                 <div className="flex justify-center space-x-4 mt-2">
+                  <a href="https://wa.me/250788523183" className="flex items-center text-green-600 hover:text-green-800">
+                    <FaWhatsapp className="mr-2" /> WhatsApp
+                  </a>
                   <a href="mailto:support@example.com" className="flex items-center text-blue-600 hover:text-blue-800">
                     <FaEnvelope className="mr-2" /> Email
                   </a>
