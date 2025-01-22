@@ -32,7 +32,11 @@ const Profile = () => {
   }
 
   if (!userData) {
-    return <div>Loading...</div>;
+    return (
+      <div className="flex justify-center items-center h-32">
+        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-[#BFD48A]"></div>
+      </div>
+    );
   }
 
   return (
@@ -41,7 +45,7 @@ const Profile = () => {
         <table className="w-full text-left text-sm mt-4">
           <tbody>
             <tr>
-              <td className="font-thin text-[0.8rem] py-2">Name</td>
+              <td className="font-thin text-[0.8rem] py-2">User</td>
               <td className="text-[#BFD48A] font-semibold">{userData.name}</td>
             </tr>
             <tr>

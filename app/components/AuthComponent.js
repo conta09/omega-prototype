@@ -12,14 +12,17 @@ const AuthComponent = () => {
   const [option, setOption] = useState(""); // State for the new option field
   const [error, setError] = useState("");
   const [message, setMessage] = useState("");
+  const [isLoading, setIsLoading] = useState(false); // State for loading
 
   const router = useRouter();
 
   const handleRegister = async (e) => {
     e.preventDefault();
+    setIsLoading(true); // Start loading
 
     if (!name || !phoneNumber || !email || !password) {
       setError("All fields are necessary.");
+      setIsLoading(false); // Stop loading
       return;
     }
 
@@ -36,6 +39,7 @@ const AuthComponent = () => {
 
       if (user) {
         setError("User already exists.");
+        setIsLoading(false); // Stop loading
         return;
       }
 
@@ -59,14 +63,18 @@ const AuthComponent = () => {
     } catch (error) {
       console.log("Error during registration: ", error);
       setError("An error occurred. Please try again later.");
+    } finally {
+      setIsLoading(false); // Stop loading
     }
   };
 
   const handleLogin = async (e) => {
     e.preventDefault();
+    setIsLoading(true); // Start loading
 
     if (!email || !password) {
       setError("All fields are necessary.");
+      setIsLoading(false); // Stop loading
       return;
     }
 
@@ -85,6 +93,7 @@ const AuthComponent = () => {
         router.push("/dashboard");
       }
     }
+    setIsLoading(false); // Stop loading
   };
 
   return (
@@ -123,7 +132,7 @@ const AuthComponent = () => {
                   placeholder="Enter your name"
                 />
               </div>
-              
+
               <div className="mb-4">
                 <label className="block text-gray-700">Phone Number</label>
                 <input
@@ -134,7 +143,8 @@ const AuthComponent = () => {
                 />
               </div>
               <div className="mb-4">
-                <label className="block text-gray-700">Referral</label> {/* New Option Field */}
+                <label className="block text-gray-700">Referral</label>{" "}
+                {/* New Option Field */}
                 <input
                   onChange={(e) => setOption(e.target.value)}
                   type="text"
@@ -162,8 +172,19 @@ const AuthComponent = () => {
               placeholder="Enter your password"
             />
           </div>
-          <button className="w-full bg-blue-600 text-white py-2 rounded-lg">
-            {isLogin ? "Log In" : "Register"}
+          <button
+            className="w-full bg-blue-600 text-white py-2 rounded-lg relative"
+            disabled={isLoading}
+          >
+            {isLoading ? (
+              <div className="flex justify-center items-center">
+                <div className="loader"></div>
+              </div>
+            ) : isLogin ? (
+              "Log In"
+            ) : (
+              "Register"
+            )}
           </button>
           {error && (
             <div className="bg-[#be3232] p-2 text-[0.9rem] my-2 rounded-md w-fit">
@@ -182,6 +203,27 @@ const AuthComponent = () => {
           </p>
         )}
       </div>
+
+      {/* Spinner CSS */}
+      <style jsx>{`
+        .loader {
+          border: 4px solid rgba(255, 255, 255, 0.3);
+          border-radius: 50%;
+          border-top: 4px solid #ffffff;
+          width: 24px;
+          height: 24px;
+          animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+          0% {
+            transform: rotate(0deg);
+          }
+          100% {
+            transform: rotate(360deg);
+          }
+        }
+      `}</style>
     </div>
   );
 };
