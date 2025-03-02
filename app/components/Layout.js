@@ -30,7 +30,7 @@ const Layout = ({ children, handleDepositClick, handleWithdrawClick, setContent,
     };
 
     return (
-        <div className="h-screen flex justify-center bg-black">
+        <div className="h-screen flex justify-center ">
             <Sidebar setContent={setContent} toggleMenu={toggleMenu} activeMenu={activeMenu} />
             <main className="content flex-grow text-white">
                 <div className="">

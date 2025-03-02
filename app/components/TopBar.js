@@ -36,9 +36,9 @@ const TopBar = ({ handleDepositClick }) => {
   };
 
   return (
-    <div className="bg-[#141318] text-white p-6 rounded-[35px] max-w-[28rem] lg:max-w-[50rem] mx-auto">
+    <div className="bg-[#141318]  text-white p-6 rounded-[35px] max-w-[28rem] lg:max-w-[50rem] mx-auto">
       <div className="flex items-center">
-        <h1 className="text-[1.5rem] text-[#BFD48A] font-normal py-5">Dashboard</h1>
+        <h1 className="text-[1.5rem] text-[#908e8e] font-bold py-5">Portfolio</h1>
       </div>
       <Profile />
       {/*
@@ -57,18 +57,18 @@ const TopBar = ({ handleDepositClick }) => {
       <div className="flex space-x-4 my-5">
         <button
           onClick={handleDepositClick}
-          className="flex items-center justify-center bg-[#BFD48A] text-black px-4 py-2 rounded-lg hover:bg-[#8e9e68]"
+          className="flex items-center justify-center px-9 py-3 rounded-2xl bg-white/10 backdrop-blur-lg  text-white hover:brightness-110 transition-all font-medium shadow-lg"
         >
           <FaHandHoldingUsd className="mr-2" />
           Deposit
         </button>
         <button
-          onClick={handleWithdrawClick}
-          className="flex items-center justify-center bg-black text-white px-4 py-2 rounded-lg hover:bg-gray-700"
-        >
-          <FaHandHoldingUsd className="mr-2" />
-          Withdraw
-        </button>
+  onClick={handleWithdrawClick}
+  className="flex items-center justify-center bg-gradient-to-br from-[#7a56c6c9] to-[#341e5f] text-white px-9 py-3 rounded-2xl hover:brightness-110 transition-all font-medium shadow-lg"
+>
+  Withdraw
+</button>
+
       </div>
 
       {isPopupOpen && <WithdrawRequest onClose={closePopup} />}

@@ -37,7 +37,7 @@ const HomePage = () => {
       <h2 className="text-sm font-medium text-[#a9a8a8]">Current Crypto Prices</h2>
       <div className="space-y-2">
         {prices.map((crypto) => (
-          <div key={crypto.id} className="flex justify-between items-center py-5 px-3 bg-[#141318] rounded-xl">
+          <div key={crypto.id} className="flex justify-between items-center py-5 px-3  rounded-xl">
             <div className="flex items-center space-x-2">
               <img src={crypto.image} alt={crypto.name} className="w-6 h-6" />
               <span className="text-white font-semibold">{crypto.name} ({crypto.symbol.toUpperCase()})</span>
@@ -45,7 +45,7 @@ const HomePage = () => {
             <div className="flex items-center space-x-2">
               <span className="text-white">${crypto.current_price.toFixed(2)}</span>
               <span
-                className={`text-sm font-semibold ${
+                className={`text-sm font-bold ${
                   crypto.price_change_percentage_24h > 0 ? 'text-green-500' : 'text-red-500'
                 }`}
               >

@@ -2,7 +2,7 @@ import { Outfit } from "next/font/google";
 import "./globals.css";
 import { NextAuthProvider } from "./Provider";
 
-const outfit = Outfit({ subsets: ["latin"] });
+const outfit = Outfit({ subsets: ["latin"], weight: ["400", "500", "700"] });
 
 export const metadata = {
   title: "Omega App",
